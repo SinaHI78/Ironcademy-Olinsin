@@ -2,11 +2,15 @@
 
 ## Pages
 
-- Home - Displays list of courses, as cards + Sign in/Sing Up/Logout if signed in
-- Sign Up - Allows visitors to create an account
-- Sign In - Allows existing users to sign in
+- Home - Displays list of courses, as cards + Sign in/Sign Up/Logout if signed in
 - Read Individual Courses - Displays course info + enroll in course
-- My Courses - displays my collection of courses
+  (in case the user is not signed in he gets redirected to the sign up page)
+- Sign Up - Allows visitors to create an account/profile
+- Sign In - Allows existing users to sign in
+- Create new courses - allowing signed in users to create their own courses
+- Edit own courses - allows creator of course to edit course
+- Delete own courses - allows creator of course to delete course
+- Profile page and my Courses - displays my collection of courses and users profile
 
 ## Route Handlers
 
@@ -17,7 +21,7 @@ GET - '/authentication/sign-in' - Renders sign in page
 POST - '/authentication/sign-in' - Handles existing user authentication
 POST - '/authentication/sign-out' - Handles user sign-out
 GET - '/course/create' - Renders course enrollment page
-POST - '/course/create' - Handles new meow creation
+POST - '/course/create' - Handles new course creation
 
 ## Models
 
@@ -26,9 +30,12 @@ POST - '/course/create' - Handles new meow creation
 1. Name
 2. email
 3. password
-4. enlisted courses
-5. created courses
-6. profile picture
+4. profile picture
+
+- Enrol
+
+1. user
+2. course id
 
 - Course
 
@@ -98,3 +105,5 @@ Dont:
 Doubts:
 
 - do we need an enrollment model (on top of user model and courses model)
+
+
