@@ -98,3 +98,5 @@ Dont:
 Doubts:
 
 - do we need an enrollment model (on top of user model and courses model)
+
+- Oliver testing Git collaboration
