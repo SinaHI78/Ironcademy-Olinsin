@@ -22,6 +22,7 @@
   POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page
   GET - '/authentication/sign-in' - Renders sign in page
   POST - '/authentication/sign-in' - Handles existing user authentication / Redirect to home page
+
 - Authenticated Users
   POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
   POST - '/course/:id/unenroll' - Handles deletion of user in specific course
