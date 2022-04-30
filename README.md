@@ -26,7 +26,7 @@
 - Authenticated Users
   POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
   POST - '/course/:id/unenroll' - Handles deletion of user in specific course
-  GET - '/course/create' - Displays the course creation page
+  GET - '/course/create' - Displays the course creation page (🦆Oliver)
   POST - '/course/create' - Handles new course creation / Redirect to Profile page
   POST - '/authentication/sign-out' - Handles user sign-out / Redirect to home page
 
