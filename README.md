@@ -2,7 +2,7 @@
 
 ## Pages
 
-- Home - Displays list of courses, as cards + Sign in/Sign Up/Logout if signed in / Create course button
+- Home - Displays list of courses, as cards + Sign in/Sign Up/Logout if signed in / Create course button (🦆Oliver)
 - Read Individual Courses - Displays course info + enroll in course
   (in case the user is not signed in he gets redirected to the sign up page)
 - Sign Up - Allows visitors to create an account/profile / Also link to sign in page for existing users
@@ -16,7 +16,7 @@
 ## Route Handlers
 
 - Visitors
-  GET - '/' - Renders home page  
+  GET - '/' - Renders home page (🦆Oliver)
   GET - '/course/:id' - Display Single course page - Enrollment button (if not auth. redirect to sign in / if creator show edit/delete button)
   GET - '/authentication/sign-up' - Renders sign up page
   POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page
@@ -35,7 +35,7 @@
   GET - '/course/:id/edit' - Displays course edit page (we will reuse the course create view)
   POST - '/course/:id/edit' - Handles updates to existing courses
 
-## Models
+## Models (🐝Inger)
 
 - User
 

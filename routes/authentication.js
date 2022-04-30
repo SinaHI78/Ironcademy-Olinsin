@@ -60,6 +60,10 @@ router.post('/sign-in', (req, res, next) => {
     });
 });
 
+//  GET - '/course/create' - Displays the course creation page (🦆Oliver)
+
+//  POST - '/course/create' - Handles new course creation / Redirect to Profile page
+
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
   res.redirect('/');
