@@ -2,26 +2,37 @@
 
 ## Pages
 
-- Home - Displays list of courses, as cards + Sign in/Sign Up/Logout if signed in
+- Home - Displays list of courses, as cards + Sign in/Sign Up/Logout if signed in / Create course button
 - Read Individual Courses - Displays course info + enroll in course
   (in case the user is not signed in he gets redirected to the sign up page)
-- Sign Up - Allows visitors to create an account/profile
-- Sign In - Allows existing users to sign in
+- Sign Up - Allows visitors to create an account/profile / Also link to sign in page for existing users
+- Sign In - Allows existing users to sign in / Also link to sign up page for new users
 - Create new courses - allowing signed in users to create their own courses
 - Edit own courses - allows creator of course to edit course
 - Delete own courses - allows creator of course to delete course
-- Profile page and my Courses - displays my collection of courses and users profile
+- Profile page and my Courses - displays my enrolled courses, my created courses, and my profile
+- Single course page - displays page with description of each course
 
 ## Route Handlers
 
-GET - '/' - Renders home page
-GET - '/authentication/sign-up' - Renders sign up page
-POST - '/authentication/sign-up' - Handles account registration
-GET - '/authentication/sign-in' - Renders sign in page
-POST - '/authentication/sign-in' - Handles existing user authentication
-POST - '/authentication/sign-out' - Handles user sign-out
-GET - '/course/create' - Renders course enrollment page
-POST - '/course/create' - Handles new course creation
+- Visitors
+  GET - '/' - Renders home page  
+  GET - '/course/:id' - Display Single course page - Enrollment button (if not auth. redirect to sign in / if creator show edit/delete button)
+  GET - '/authentication/sign-up' - Renders sign up page
+  POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page
+  GET - '/authentication/sign-in' - Renders sign in page
+  POST - '/authentication/sign-in' - Handles existing user authentication / Redirect to home page
+- Authenticated Users
+  POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
+  POST - '/course/:id/unenroll' - Handles deletion of user in specific course
+  GET - '/course/create' - Displays the course creation page
+  POST - '/course/create' - Handles new course creation / Redirect to Profile page
+  POST - '/authentication/sign-out' - Handles user sign-out / Redirect to home page
+
+- Creator
+  POST - '/course/:id/delete' - Handles course delete requests only for creator/ Refresh Profile page
+  GET - '/course/:id/edit' - Displays course edit page (we will reuse the course create view)
+  POST - '/course/:id/edit' - Handles updates to existing courses
 
 ## Models
 
@@ -34,7 +45,7 @@ POST - '/course/create' - Handles new course creation
 
 - Enrol
 
-1. user
+1. user id
 2. course id
 
 - Course
@@ -51,8 +62,7 @@ POST - '/course/create' - Handles new course creation
 
 - "Interested in" button - display the course on your profile page
 - Course rating - if enrolled to course you can rate it with stars
-- Profile page
-- Course content
+- Nodemailer - Send email with course info to enrolled users
 
 ## Project 2 specs: Presentation 14th May 2022
 
@@ -104,5 +114,4 @@ Dont:
 
 Doubts:
 
-- do we need an enrollment model (on top of user model and courses model)
-
+- do we need an enrollment model (on top of user model and courses model) ✔
