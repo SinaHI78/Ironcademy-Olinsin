@@ -12,6 +12,7 @@ const basicAuthenticationDeserializer = require('./middleware/basic-authenticati
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 const baseRouter = require('./routes/base');
 const authenticationRouter = require('./routes/authentication');
+//const creatorRouter = require('./routes/creator');
 
 const app = express();
 

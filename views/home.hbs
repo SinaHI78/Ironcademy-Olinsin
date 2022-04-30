@@ -1,2 +1,22 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div>
+
+  <div>
+
+    <h1>Welcome to IronCademy {{user.name}}!</h1>
+    <p>Your place for cool courses</p>
+
+    <h3>Here are the most popular courses:</h3>
+  </div>
+  {{#each course}}
+    <div>
+      {{course.title}}
+      {{course.picture}}
+      {{course.description}}
+      {{course.cost}}
+
+    </div>
+
+  {{/each}}
+
+  <button>Create your course!</button>
+</div>

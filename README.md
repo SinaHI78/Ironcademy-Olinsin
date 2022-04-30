@@ -17,11 +17,11 @@
 
 - Visitors
   GET - '/' - Renders home page (🦆Oliver)
-  GET - '/course/:id' - Display Single course page - Enrollment button (if not auth. redirect to sign in / if creator show edit/delete button)
-  GET - '/authentication/sign-up' - Renders sign up page
-  POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page
-  GET - '/authentication/sign-in' - Renders sign in page
-  POST - '/authentication/sign-in' - Handles existing user authentication / Redirect to home page
+  GET - '/course/:id' - Display Single course page - Enrollment button (if not auth. redirect to sign in / if creator show edit/delete button) (🦆Oliver)
+  GET - '/authentication/sign-up' - Renders sign up page (👻Sina)
+  POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page (👻Sina)
+  GET - '/authentication/sign-in' - Renders sign in page (🐝Inger)
+  POST - '/authentication/sign-in' - Handles existing user authentication / Redirect to home page (🐝Inger)
 
 - Authenticated Users
   POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
@@ -35,7 +35,7 @@
   GET - '/course/:id/edit' - Displays course edit page (we will reuse the course create view)
   POST - '/course/:id/edit' - Handles updates to existing courses
 
-## Models (🐝Inger)
+## Models ✔
 
 - User
 
