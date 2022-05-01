@@ -13,24 +13,35 @@ router.get('/sign-up', (req, res, next) => {
   res.render('sign-up');
 });
 
+const validatePassword = (value) => {
+  const numbers = value.match(/[0-9]/);
+  const uppercase = value.match(/[A-Z]/);
+  const lowercase = value.match(/[a-z]/);
+  return lowercase && uppercase && numbers && value.length >= 8;
+};
+
 router.post('/sign-up', (req, res, next) => {
   const { name, email, password } = req.body;
-  bcryptjs
-    .hash(password, 10)
-    .then((hash) => {
-      return User.create({
-        name,
-        email,
-        passwordHashAndSalt: hash
+  if (validatePassword(password)) {
+    bcryptjs
+      .hash(password, 10)
+      .then((hash) => {
+        return User.create({
+          name,
+          email,
+          passwordHashAndSalt: hash
+        });
+      })
+      .then((user) => {
+        // req.session.userId = user._id;
+        res.redirect('/authentication/sign-in');
+      })
+      .catch((error) => {
+        next(error);
       });
-    })
-    .then((user) => {
-      req.session.userId = user._id;
-      res.redirect('/private');
-    })
-    .catch((error) => {
-      next(error);
-    });
+  } else {
+    next(new Error('Invalid Password'));
+  }
 });
 
 router.get('/sign-in', (req, res, next) => {
