@@ -2,21 +2,21 @@
 
   <div>
 
-    <h1>Welcome to IronCademy {{user.name}}!</h1>
+    <h1>Welcome to IronCademy!</h1>
     <p>Your place for cool courses</p>
 
     <h3>Here are the most popular courses:</h3>
   </div>
-  {{#each course}}
+  {{#each courses}}
     <div>
-      {{course.title}}
-      {{course.picture}}
-      {{course.description}}
-      {{course.cost}}
+      {{courses.title}}
+      {{courses.picture}}
+      {{courses.description}}
+      {{courses.cost}}
 
     </div>
 
   {{/each}}
 
-  <button>Create your course!</button>
+  <a href="/course-create">Create your own course!</a>
 </div>

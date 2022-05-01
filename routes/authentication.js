@@ -6,6 +6,7 @@ const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const Course = require('./../models/course');
 const Enroll = require('./../models/enroll');
+const routeGuard = require('../middleware/route-guard');
 
 const router = new Router();
 
@@ -74,6 +75,10 @@ router.post('/sign-in', (req, res, next) => {
 });
 
 //  GET - '/course/create' - Displays the course creation page (🦆Oliver)
+
+router.get('/course-create', routeGuard, (req, res, next) => {
+  res.render('course-create');
+});
 
 //  POST - '/course/create' - Handles new course creation / Redirect to Profile page
 

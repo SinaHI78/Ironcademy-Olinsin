@@ -7,8 +7,16 @@ const User = require('./../models/user');
 const Course = require('./../models/course');
 const Enroll = require('./../models/enroll');
 
+// Renders home page (🦆Oliver)
 router.get('/', (req, res, next) => {
-  res.render('home', { title: 'Hello World!' });
+  Course.find()
+    .sort({ createdAt: -1 })
+    .then((courses) => {
+      res.render('home', { courses });
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 router.get('/private', routeGuard, (req, res, next) => {
