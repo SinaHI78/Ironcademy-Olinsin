@@ -18,22 +18,22 @@
 - Visitors
   GET - '/' - Renders home page (🦆Oliver) ✅
   GET - '/course/:id' - Display Single course page - Enrollment button (if not auth. redirect to sign in / if creator show edit/delete button) (🦆Oliver)
-  GET - '/authentication/sign-up' - Renders sign up page (👻Sina)
-  POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page (👻Sina)
-  GET - '/authentication/sign-in' - Renders sign in page (🐝Inger)
-  POST - '/authentication/sign-in' - Handles existing user authentication / Redirect to home page (🐝Inger)
+  GET - '/authentication/sign-up' - Renders sign up page (👻Sina)✅
+  POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page (👻Sina)✅
+  GET - '/authentication/sign-in' - Renders sign in page (🐝Inger)✅
+  POST - '/authentication/sign-in' - Handles existing user authentication / Redirect to home page (🐝Inger)✅
 
 - Authenticated Users
   POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message. Display single course page. (👻Sina)
   POST - '/course/:id/unenroll' - Handles deletion of user in specific course (👻Sina)
-  GET - '/course-create' - Displays the course creation page (👻Sina)/(🦆Oliver)
-  POST - '/course/create' - Handles new course creation / Redirect to Private page ()
-  POST - '/authentication/sign-out' - Handles user sign-out / Redirect to home page
+  GET - '/course-create' - Displays the course creation page (👻Sina)/(🦆Oliver)✅
+  POST - '/course/create' - Handles new course creation / Redirect to Private page✅
+  POST - '/authentication/sign-out' - Handles user sign-out / Redirect to home page✅
 
 - Creator
-  POST - '/course/:id/delete' - Handles course delete requests only for creator/ Refresh Private page
-  GET - '/course/:id/edit' - Displays course edit page (we will reuse the course create view)
-  POST - '/course/:id/edit' - Handles updates to existing courses
+  POST - '/course/:id/delete' - Handles course delete requests only for creator/ Refresh Private page(🐝Inger)
+  GET - '/course/:id/edit' - Displays course edit page (we will reuse the course create view)(🐝Inger)
+  POST - '/course/:id/edit' - Handles updates to existing courses(🐝Inger)
 
 ## Models ✔
 
