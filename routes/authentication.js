@@ -80,7 +80,38 @@ router.get('/course-create', routeGuard, (req, res, next) => {
   res.render('course-create');
 });
 
-//  POST - '/course/create' - Handles new course creation / Redirect to Profile page
+// POST - '/course/create' - Handles new course creation / Redirect to Profile page
+
+// POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
+router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  Enroll.create({
+    userId: req.user._id,
+    courseId: req.course._id
+  })
+    .then((enroll) => {
+      if (!enroll) {
+        throw new Error('COURSE_NOT_FOUND');
+      } else {
+        res.redirect('/single-course', { course });
+      }
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+// POST - '/course/:id/unenroll' - Handles deletion of user in specific course
+router.post('course/:id/unenroll', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  Course.findOneAndDelete({ _id: id })
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
 
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
