@@ -92,9 +92,12 @@ router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
       if (!enroll) {
         throw new Error('COURSE_NOT_FOUND');
       } else {
-        const course = Course.findById(id);
-        console.log(course);
-        res.render('single-course', { course });
+        Course.findById(id)
+          .populate('creator')
+          .then((course) => {
+            console.log(course);
+            res.render('single-course', { course });
+          });
       }
     })
     .catch((error) => {
