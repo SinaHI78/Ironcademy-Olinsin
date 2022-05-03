@@ -14,7 +14,9 @@
       {{picture}}
       {{schedule}}
       {{cost}}
-      <a href="/authentication/single-course">Enroll in this course</a>
+      <form method="POST" action="/authentication/course/{{_id}}/enroll">
+        <button>Enroll</button>
+      </form>
       <hr />
     </div>
   {{/each}}

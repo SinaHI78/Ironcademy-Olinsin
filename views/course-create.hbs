@@ -1,10 +1,15 @@
 <h1>Create your own course and share the knowledge:</h1>
 
-<form action="POST" enctype="multipart/form-data">
+<form
+  method="POST"
+  action="/authentication/course-create"
+  enctype="multipart/form-data"
+>
 
   <input type="text" name="title" placeholder="Course title..." />
   <textarea name="description" placeholder="Describe it..."></textarea>
   <input type="text" name="cost" placeholder="Set a price for your course" />
+  <input type="text" name="schedule" placeholder="Set your timings" />
   <input type="file" name="picture" accept="image/*" name="picture" />
 
   <button>Create your course!</button>

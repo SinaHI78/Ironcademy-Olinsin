@@ -76,7 +76,6 @@ router.post('/sign-in', (req, res, next) => {
 });
 
 //  GET - '/course/create' - Displays the course creation page (🦆Oliver)
-
 router.get('/course-create', routeGuard, (req, res, next) => {
   res.render('course-create');
 });
@@ -84,15 +83,18 @@ router.get('/course-create', routeGuard, (req, res, next) => {
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
   const { id } = req.params;
+  console.log(req.params);
   Enroll.create({
-    userId: req.user._id,
-    courseId: req.course._id
+    userId: req.user._id, // req.session.userId
+    courseId: id
   })
     .then((enroll) => {
       if (!enroll) {
         throw new Error('COURSE_NOT_FOUND');
       } else {
-        res.redirect('/single-course', { course });
+        const course = Course.findById(id);
+        console.log(course);
+        res.render('single-course', { course });
       }
     })
     .catch((error) => {
@@ -119,7 +121,7 @@ router.post(
   routeGuard,
   fileUpload.single('picture'),
   (req, res, next) => {
-    const { description } = req.body;
+    const { title, cost, schedule, description } = req.body;
     let picture;
     if (req.file) {
       picture = req.file.path;
@@ -129,10 +131,11 @@ router.post(
       description,
       cost,
       picture,
+      schedule,
       creator: req.user._id
     })
       .then(() => {
-        res.redirect('private');
+        res.redirect('/private');
       })
       .catch((error) => {
         next(error);
