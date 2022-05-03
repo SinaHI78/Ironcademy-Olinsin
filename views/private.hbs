@@ -3,3 +3,22 @@
 <span><strong>Name</strong>: {{user.name}}</span>
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
+
+{{#if course}}
+
+  <h2>Course details:</h2>
+  <div>
+    {{course.title}}
+    {{course.picture}}
+    {{course.description}}
+    {{course.schedule}}
+    {{course.cost}}
+    {{course.creator.name}}
+  </div>
+  <a href="/creator/course/{{course._id}}/edit" class="btn">Edit Course</a>
+
+  <form method="POST" action="/course/{{course._id}}/delete">
+    <button>Delete Course</button>
+  </form>
+
+{{/if}}
