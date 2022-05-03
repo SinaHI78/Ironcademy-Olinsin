@@ -7,6 +7,7 @@ const User = require('./../models/user');
 const Course = require('./../models/course');
 const Enroll = require('./../models/enroll');
 const routeGuard = require('../middleware/route-guard');
+const fileUpload = require('./../middleware/file-upload');
 
 const router = new Router();
 
@@ -80,8 +81,6 @@ router.get('/course-create', routeGuard, (req, res, next) => {
   res.render('course-create');
 });
 
-// POST - '/course/create' - Handles new course creation / Redirect to Profile page
-
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
   const { id } = req.params;
@@ -112,6 +111,34 @@ router.post('course/:id/unenroll', routeGuard, (req, res, next) => {
       next(error);
     });
 });
+
+//  POST - '/course-create' - Handles new course creation / Redirect to Profile page (🦆Oliver)
+
+router.post(
+  '/course-create',
+  routeGuard,
+  fileUpload.single('picture'),
+  (req, res, next) => {
+    const { description } = req.body;
+    let picture;
+    if (req.file) {
+      picture = req.file.path;
+    }
+    Course.create({
+      title,
+      description,
+      cost,
+      picture,
+      creator: req.user._id
+    })
+      .then(() => {
+        res.redirect('private');
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
+);
 
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
