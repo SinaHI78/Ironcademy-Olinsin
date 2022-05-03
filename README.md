@@ -2,7 +2,7 @@
 
 ## Pages
 
-- Home - Displays list of courses, as cards + Sign in/Sign Up/Logout if signed in / Create course button (🦆Oliver)
+- Home - Displays list of courses, as cards + Sign in/Sign Up/Logout if signed in / Create course button
 - Read Individual Courses - Displays course info + enroll in course
   (in case the user is not signed in he gets redirected to the sign up page)
 - Sign Up - Allows visitors to create an account/profile / Also link to sign in page for existing users
@@ -16,17 +16,16 @@
 ## Route Handlers
 
 - Visitors
-  GET - '/' - Renders home page (🦆Oliver) ✅
-  GET - '/course/:id' - Display Single course page - Enrollment button (if not auth. redirect to sign in / if creator show edit/delete button) (🦆Oliver)
-  GET - '/authentication/sign-up' - Renders sign up page (👻Sina)
-  POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page (👻Sina)
-  GET - '/authentication/sign-in' - Renders sign in page (🐝Inger)
-  POST - '/authentication/sign-in' - Handles existing user authentication / Redirect to home page (🐝Inger)
-
+  GET - '/' - Renders home page  
+  GET - '/course/:id' - Display Single course page - Enrollment button (if not auth. redirect to sign in / if creator show edit/delete button)
+  GET - '/authentication/sign-up' - Renders sign up page
+  POST - '/authentication/sign-up' - Handles account registration / Redirect to Sign in page
+  GET - '/authentication/sign-in' - Renders sign in page
+  POST - '/authentication/sign-in' - Handles existing user authentication / Redirect to home page
 - Authenticated Users
-  POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message. Display single course page. (👻Sina)
-  POST - '/course/:id/unenroll' - Handles deletion of user in specific course (👻Sina)
-  GET - '/course-create' - Displays the course creation page (👻Sina)/(🦆Oliver)
+  POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
+  POST - '/course/:id/unenroll' - Handles deletion of user in specific course
+  GET - '/course/create' - Displays the course creation page
   POST - '/course/create' - Handles new course creation / Redirect to Profile page
   POST - '/authentication/sign-out' - Handles user sign-out / Redirect to home page
 
@@ -35,7 +34,7 @@
   GET - '/course/:id/edit' - Displays course edit page (we will reuse the course create view)
   POST - '/course/:id/edit' - Handles updates to existing courses
 
-## Models ✔
+## Models
 
 - User
 
