@@ -10,7 +10,7 @@
 - Create new courses - allowing signed in users to create their own courses
 - Edit own courses - allows creator of course to edit course
 - Delete own courses - allows creator of course to delete course
-- Profile page and my Courses - displays my enrolled courses, my created courses, and my profile
+- Private page and my Courses - displays my enrolled courses, my created courses, and my profile
 - Single course page - displays page with description of each course
 
 ## Route Handlers
@@ -27,11 +27,11 @@
   POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message. Display single course page. (👻Sina)
   POST - '/course/:id/unenroll' - Handles deletion of user in specific course (👻Sina)
   GET - '/course-create' - Displays the course creation page (👻Sina)/(🦆Oliver)
-  POST - '/course/create' - Handles new course creation / Redirect to Profile page
+  POST - '/course/create' - Handles new course creation / Redirect to Private page
   POST - '/authentication/sign-out' - Handles user sign-out / Redirect to home page
 
 - Creator
-  POST - '/course/:id/delete' - Handles course delete requests only for creator/ Refresh Profile page
+  POST - '/course/:id/delete' - Handles course delete requests only for creator/ Refresh Private page
   GET - '/course/:id/edit' - Displays course edit page (we will reuse the course create view)
   POST - '/course/:id/edit' - Handles updates to existing courses
 
