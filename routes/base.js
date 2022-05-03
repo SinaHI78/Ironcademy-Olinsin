@@ -19,6 +19,20 @@ router.get('/', (req, res, next) => {
     });
 });
 
+// Renders Single Course page
+
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  Course.findById(id)
+    .populate('creator')
+    .then((course) => {
+      res.render('single-course', { course });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 router.get('/private', routeGuard, (req, res, next) => {
   res.render('private');
 });

@@ -121,6 +121,7 @@ router.post(
   routeGuard,
   fileUpload.single('picture'),
   (req, res, next) => {
+    console.log('Blah blah');
     const { title, cost, schedule, description } = req.body;
     let picture;
     if (req.file) {
@@ -134,10 +135,12 @@ router.post(
       schedule,
       creator: req.user._id
     })
-      .then(() => {
+      .then((course) => {
+        console.log(course);
         res.redirect('/private');
       })
       .catch((error) => {
+        console.log(error);
         next(error);
       });
   }

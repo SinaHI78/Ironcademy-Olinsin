@@ -8,6 +8,6 @@ const storage = new multerStorageCloudinary.CloudinaryStorage({
   cloudinary: cloudinary.v2
 });
 
-const upload = multer({ storage });
-
+const upload = multer({ dest: './../public/images' });
+// when cloudinary is set up change to : const upload = multer({ storage });
 module.exports = upload;
