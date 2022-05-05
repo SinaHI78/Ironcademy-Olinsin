@@ -16,8 +16,8 @@
     {{cost}}
     {{creator.name}}
   </div>
-  <a href="/creator/course/{{course._id}}/edit" class="btn">Edit Course</a>
-  <form method="POST" action="/course/{{course._id}}/delete">
+  <a href="/creator/course/{{_id}}/edit" class="btn">Edit Course</a>
+  <form method="POST" action="/creator/course/{{_id}}/delete">
     <button>Delete Course</button>
   </form>
 {{/each}}
@@ -34,7 +34,7 @@
     {{courseId.cost}}
     {{courseId.creator.name}}
   </div>
-  <form method="POST" action="/authentication/private/{{enroll._id}}/unenroll">
-    <button class="enroll">Unenroll from this course</button>
+  <form method="POST" action="/authentication/course/{{courseId._id}}/unenroll">
+    <button>Unenroll from this course</button>
   </form>
 {{/each}}

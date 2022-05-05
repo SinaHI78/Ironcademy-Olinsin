@@ -95,9 +95,6 @@ router.get('/private', routeGuard, (req, res, next) => {
 
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
-  if (!req.user) {
-    alert('Please sign-in to enroll');
-  } else {
     const { id } = req.params;
     Enroll.create({
       userId: req.user._id, // req.session.userId
@@ -124,7 +121,7 @@ router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
 router.post('/course/:id/unenroll', routeGuard, (req, res, next) => {
   const { id } = req.params;
   console.log('This is the id:', id);
-  Enroll.findOneAndDelete({ _id: id })
+  Enroll.findOneAndDelete({ userId: req.user._id, courseId: id })
     .then(() => {
       res.redirect('/authentication/private');
     })

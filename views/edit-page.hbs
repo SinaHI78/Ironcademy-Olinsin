@@ -6,10 +6,11 @@
   enctype="multipart/form-data"
 >
 
-  <input type="text" name="title" value="{{course.id.name}}" />
-  <textarea name="description" value="{{course.id.description}}"></textarea>
-  <input type="text" name="cost" value="{{course.id.cost}}" />
-  <input type="text" name="schedule" value="{{course.id.schedule}}" />
+  <input type="text" name="title" value="{{course.title}}" />
+  <textarea name="description">{{course.description}}</textarea>
+  <input type="text" name="cost" value="{{course.cost}}" />
+  <input type="text" name="schedule" value="{{course.schedule}}" />
+  <img src="{{course.picture}}" />
   <input type="file" name="picture" accept="image/*" name="picture" />
 
   <button>Edit your course!</button>

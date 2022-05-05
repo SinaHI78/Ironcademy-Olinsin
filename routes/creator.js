@@ -1,7 +1,9 @@
-const express = require('express');
 const User = require('./../models/user');
 const Course = require('./../models/course');
 const Enroll = require('./../models/enroll');
+const { Router } = require('express');
+const router = new Router();
+const routeGuard = require('../middleware/route-guard');
 
 //module.exports = creator;
 
