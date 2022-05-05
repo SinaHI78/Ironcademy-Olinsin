@@ -24,13 +24,11 @@ const Enroll = require('./../models/enroll');
 
 //POST - '/course/:id/delete' - Handles course delete requests only for creator/ Refresh Private page(🐝Inger)
 //input: use form button on private page
-
 router.post('/course/:id/delete', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  Course.findOneAndDelete({ _id: id })
+  Course.findOneAndDelete({ _id: id, creator: req.user._id })
     .then(() => {
-      console.log('deleted course');
-      res.redirect('/private');
+      res.redirect('/authentication/private');
     })
     .catch((error) => {
       next(error);

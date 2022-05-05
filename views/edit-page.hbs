@@ -1,21 +1,16 @@
-<h1>Create your own course and share the knowledge:</h1>
+<h1>Edit your course:</h1>
 
 <form
   method="POST"
-  action="/authentication/course-create"
+  action="/creator/course/:id/edit"
   enctype="multipart/form-data"
 >
 
-  <input
-    value="{{course.id.name}}"
-    type="text"
-    name="title"
-    placeholder="Course title..."
-  />
-  <textarea name="description" placeholder="Describe it..."></textarea>
-  <input type="text" name="cost" placeholder="Set a price for your course" />
-  <input type="text" name="schedule" placeholder="Set your timings" />
+  <input type="text" name="title" value="{{course.id.name}}" />
+  <textarea name="description" value="{{course.id.description}}"></textarea>
+  <input type="text" name="cost" value="{{course.id.cost}}" />
+  <input type="text" name="schedule" value="{{course.id.schedule}}" />
   <input type="file" name="picture" accept="image/*" name="picture" />
 
-  <button>Create your course!</button>
+  <button>Edit your course!</button>
 </form>

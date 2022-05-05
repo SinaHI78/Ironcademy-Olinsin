@@ -32,4 +32,7 @@
     {{courseId.cost}}
     {{courseId.creator.name}}
   </div>
+  <form method="POST" action="/authentication/private/{{enroll._id}}/unenroll">
+    <button>Unenroll from this course</button>
+  </form>
 {{/each}}

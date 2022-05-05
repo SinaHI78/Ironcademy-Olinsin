@@ -76,14 +76,12 @@ router.post('/sign-in', (req, res, next) => {
 });
 
 router.get('/private', routeGuard, (req, res, next) => {
-  console.log(req.user._id);
   Course.find({ creator: req.user._id })
     .populate('creator')
     .then((createdCourses) => {
       Enroll.find({ userId: req.user._id })
         .populate('courseId')
         .then((enrollments) => {
-          console.log(enrollments);
           res.render('private', { createdCourses, enrollments });
         })
         .catch((error) => {
@@ -97,31 +95,36 @@ router.get('/private', routeGuard, (req, res, next) => {
 
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
-  const { id } = req.params;
-  Enroll.create({
-    userId: req.user._id, // req.session.userId
-    courseId: id
-  })
-    .then((enroll) => {
-      if (!enroll) {
-        throw new Error('COURSE_NOT_FOUND');
-      } else {
-        Course.findById(id)
-          .populate('creator')
-          .then((course) => {
-            res.render('single-course', { course });
-          });
-      }
+  if (!req.user) {
+    alert('Please sign-in to enroll');
+  } else {
+    const { id } = req.params;
+    Enroll.create({
+      userId: req.user._id, // req.session.userId
+      courseId: id
     })
-    .catch((error) => {
-      next(error);
-    });
+      .then((enroll) => {
+        if (!enroll) {
+          throw new Error('COURSE_NOT_FOUND');
+        } else {
+          Course.findById(id)
+            .populate('creator')
+            .then((course) => {
+              res.render('single-course', { course });
+            });
+        }
+      })
+      .catch((error) => {
+        next(error);
+      });
+  }
 });
 
 // POST - '/course/:id/unenroll' - Handles deletion of user in specific course
-router.post('course/:id/unenroll', routeGuard, (req, res, next) => {
+router.post('/course/:id/unenroll', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  Course.findOneAndDelete({ _id: id })
+  console.log('This is the id:', id);
+  Enroll.findOneAndDelete({ _id: id })
     .then(() => {
       res.redirect('/authentication/private');
     })
