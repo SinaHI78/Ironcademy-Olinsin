@@ -3,8 +3,9 @@
 <span><strong>Name</strong>: {{user.name}}</span>
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
-
-<h1>Your created coures</h1>
+<hr />
+<h1>Your created courses</h1>
+<hr />
 {{#each createdCourses}}
   <h2>Course details:</h2>
   <div>
@@ -20,8 +21,9 @@
     <button>Delete Course</button>
   </form>
 {{/each}}
-
+<hr />
 <h1>Enrolled in:</h1>
+<hr />
 {{#each enrollments}}
   <h2>Course details:</h2>
   <div>
@@ -33,6 +35,6 @@
     {{courseId.creator.name}}
   </div>
   <form method="POST" action="/authentication/private/{{enroll._id}}/unenroll">
-    <button>Unenroll from this course</button>
+    <button class="enroll">Unenroll from this course</button>
   </form>
 {{/each}}
