@@ -20,21 +20,18 @@ router.get('/', (req, res, next) => {
 });
 
 // Renders Single Course page
-
-router.get('/:id', (req, res, next) => {
+router.get('/course/:id', (req, res, next) => {
   const { id } = req.params;
   Course.findById(id)
     .populate('creator')
     .then((course) => {
-      res.render('single-course', { course });
+      let userIsCreator =
+        req.user && String(req.user._id) === String(course.creator._id);
+      res.render('single-course', { course, userIsCreator });
     })
     .catch((error) => {
       next(error);
     });
-});
-
-router.get('/private', routeGuard, (req, res, next) => {
-  res.render('private');
 });
 
 module.exports = router;

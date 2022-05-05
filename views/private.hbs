@@ -4,21 +4,32 @@
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
 
-{{#if course}}
-
+<h1>Your created coures</h1>
+{{#each createdCourses}}
   <h2>Course details:</h2>
   <div>
-    {{course.title}}
-    {{course.picture}}
-    {{course.description}}
-    {{course.schedule}}
-    {{course.cost}}
-    {{course.creator.name}}
+    <a href="/course/{{_id}}">{{title}}</a>
+    {{picture}}
+    {{description}}
+    {{schedule}}
+    {{cost}}
+    {{creator.name}}
   </div>
   <a href="/creator/course/{{course._id}}/edit" class="btn">Edit Course</a>
-
   <form method="POST" action="/course/{{course._id}}/delete">
     <button>Delete Course</button>
   </form>
+{{/each}}
 
-{{/if}}
+<h1>Enrolled in:</h1>
+{{#each enrollments}}
+  <h2>Course details:</h2>
+  <div>
+    <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
+    {{courseId.picture}}
+    {{courseId.description}}
+    {{courseId.schedule}}
+    {{courseId.cost}}
+    {{courseId.creator.name}}
+  </div>
+{{/each}}

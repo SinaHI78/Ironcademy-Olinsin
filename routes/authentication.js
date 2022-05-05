@@ -65,7 +65,7 @@ router.post('/sign-in', (req, res, next) => {
     .then((result) => {
       if (result) {
         req.session.userId = user._id;
-        res.redirect('/private');
+        res.redirect('/authentication/private');
       } else {
         return Promise.reject(new Error('Wrong password.'));
       }
@@ -75,15 +75,29 @@ router.post('/sign-in', (req, res, next) => {
     });
 });
 
-//  GET - '/course/create' - Displays the course creation page (🦆Oliver)
-router.get('/course-create', routeGuard, (req, res, next) => {
-  res.render('course-create');
+router.get('/private', routeGuard, (req, res, next) => {
+  console.log(req.user._id);
+  Course.find({ creator: req.user._id })
+    .populate('creator')
+    .then((createdCourses) => {
+      Enroll.find({ userId: req.user._id })
+        .populate('courseId')
+        .then((enrollments) => {
+          console.log(enrollments);
+          res.render('private', { createdCourses, enrollments });
+        })
+        .catch((error) => {
+          next(error);
+        });
+    })
+    .catch((error) => {
+      next(error);
+    });
 });
 
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  console.log(req.params);
   Enroll.create({
     userId: req.user._id, // req.session.userId
     courseId: id
@@ -95,7 +109,6 @@ router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
         Course.findById(id)
           .populate('creator')
           .then((course) => {
-            console.log(course);
             res.render('single-course', { course });
           });
       }
@@ -110,21 +123,24 @@ router.post('course/:id/unenroll', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Course.findOneAndDelete({ _id: id })
     .then(() => {
-      res.redirect('/');
+      res.redirect('/authentication/private');
     })
     .catch((error) => {
       next(error);
     });
 });
 
-//  POST - '/course-create' - Handles new course creation / Redirect to Profile page (🦆Oliver)
+//  GET - '/course/create' - Displays the course creation page (🦆Oliver)
+router.get('/course-create', routeGuard, (req, res, next) => {
+  res.render('course-create');
+});
 
+//  POST - '/course-create' - Handles new course creation / Redirect to Profile page (🦆Oliver)
 router.post(
   '/course-create',
   routeGuard,
   fileUpload.single('picture'),
   (req, res, next) => {
-    console.log('Blah blah');
     const { title, cost, schedule, description } = req.body;
     let picture;
     if (req.file) {
@@ -139,8 +155,7 @@ router.post(
       creator: req.user._id
     })
       .then((course) => {
-        console.log(course);
-        res.redirect('/private');
+        res.redirect('/authentication/private');
       })
       .catch((error) => {
         console.log(error);
