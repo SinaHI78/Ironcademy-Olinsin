@@ -95,26 +95,25 @@ router.get('/private', routeGuard, (req, res, next) => {
 
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
-    const { id } = req.params;
-    Enroll.create({
-      userId: req.user._id, // req.session.userId
-      courseId: id
+  const { id } = req.params;
+  Enroll.create({
+    userId: req.user._id, // req.session.userId
+    courseId: id
+  })
+    .then((enroll) => {
+      if (!enroll) {
+        throw new Error('COURSE_NOT_FOUND');
+      } else {
+        Course.findById(id)
+          .populate('creator')
+          .then((course) => {
+            res.render('single-course', { course });
+          });
+      }
     })
-      .then((enroll) => {
-        if (!enroll) {
-          throw new Error('COURSE_NOT_FOUND');
-        } else {
-          Course.findById(id)
-            .populate('creator')
-            .then((course) => {
-              res.render('single-course', { course });
-            });
-        }
-      })
-      .catch((error) => {
-        next(error);
-      });
-  }
+    .catch((error) => {
+      next(error);
+    });
 });
 
 // POST - '/course/:id/unenroll' - Handles deletion of user in specific course
