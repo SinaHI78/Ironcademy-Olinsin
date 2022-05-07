@@ -35,8 +35,8 @@ router.post('/sign-up', (req, res, next) => {
         });
       })
       .then((user) => {
-        // req.session.userId = user._id;
-        res.redirect('/authentication/sign-in');
+        req.session.userId = user._id;
+        res.redirect('/authentication/private');
       })
       .catch((error) => {
         next(error);
