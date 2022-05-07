@@ -1,7 +1,9 @@
 <h2>Course details:</h2>
 <div>
   {{course.title}}
-  {{course.picture}}
+  {{#if picture}}
+    <img src="{{picture}}" alt="" />
+  {{/if}}
   {{course.description}}
   {{course.schedule}}
   {{course.cost}}
