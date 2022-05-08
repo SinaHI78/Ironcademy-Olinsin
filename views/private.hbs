@@ -4,6 +4,17 @@
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
 <hr />
+<h3>Add your profile picture here:</h3>
+<form
+  method="POST"
+  action="/authentication/private"
+  enctype="multipart/form-data"
+>
+  <label for="profile-picture">Picture:</label>
+  <input id="profile-picture" type="file" name="picture" accept="image/*" />
+  <button>Add picture</button>
+</form>
+<hr />
 <h1>Your created courses</h1>
 <hr />
 {{#each createdCourses}}
@@ -38,3 +49,4 @@
     <button>Unenroll from this course</button>
   </form>
 {{/each}}
+<a href="/authentication/course-create">Create your own course!</a>

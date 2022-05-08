@@ -57,11 +57,17 @@
 6. Creator
 7. Timestamp
 
+## Styling
+
+- work in the SCSS
+- use bootstrap
+
 ## Wishlist
 
 - "Interested in" button - display the course on your profile page
-- Course rating - if enrolled to course you can rate it with stars
+- Course rating - if enrolled to course you can rate it with stars, the higher the course is rated, the further up it will be displayed
 - Nodemailer - Send email with course info to enrolled users
+- Search field
 
 ## Project 2 specs: Presentation 14th May 2022
 
@@ -102,15 +108,12 @@ Course creation
 
 Make it fun and interesting... humuoristic titles and styling
 
-UserSchema:
+# Pushing to Heroku
 
-- userSchema: should have a property with the course id
-- userSchema: enrolled courses
+- heroku login
+- git add .
+- git commit -m "..."
+- git push
+- git push heroku main
 
-Dont:
-
--
-
-Doubts:
-
-- do we need an enrollment model (on top of user model and courses model) ✔
+If stuff goes wrong: heroku git:remote -a ironcademy
