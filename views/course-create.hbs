@@ -5,12 +5,35 @@
   action="/authentication/course-create"
   enctype="multipart/form-data"
 >
-
-  <input type="text" name="title" placeholder="Course title..." />
-  <textarea name="description" placeholder="Describe it..."></textarea>
-  <input type="text" name="cost" placeholder="Set a price for your course" />
-  <input type="text" name="schedule" placeholder="Set your timings" />
-  <input type="file" name="picture" accept="image/*" />
+  <label for="course-title">Title:</label>
+  <input
+    id="course-title"
+    type="text"
+    name="title"
+    placeholder="Course title..."
+  />
+  <label for="course-description">Description:</label>
+  <textarea
+    id="course-description"
+    name="description"
+    placeholder="Describe it..."
+  ></textarea>
+  <label for="course-cost">Cost:</label>
+  <input
+    id="course-cost"
+    type="text"
+    name="cost"
+    placeholder="Set a price for your course"
+  />
+  <label for="course-schedule">Schedule:</label>
+  <input
+    id="course-schedule"
+    type="text"
+    name="schedule"
+    placeholder="Set your timings"
+  />
+  <label for="course-picture">Picture:</label>
+  <input id="course-picture" type="file" name="picture" accept="image/*" />
 
   <button>Create your course!</button>
 </form>

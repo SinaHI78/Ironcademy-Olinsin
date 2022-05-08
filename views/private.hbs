@@ -21,7 +21,9 @@
   <h2>Course details:</h2>
   <div>
     <a href="/course/{{_id}}">{{title}}</a>
-    {{picture}}
+    {{#if picture}}
+      <img src="{{picture}}" alt="Course Picture" />
+    {{/if}}
     {{description}}
     {{schedule}}
     {{cost}}
@@ -39,7 +41,9 @@
   <h2>Course details:</h2>
   <div>
     <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
-    {{courseId.picture}}
+    {{#if courseId.picture}}
+      <img src="{{courseId.picture}}" alt="Course Picture" />
+    {{/if}}
     {{courseId.description}}
     {{courseId.schedule}}
     {{courseId.cost}}
