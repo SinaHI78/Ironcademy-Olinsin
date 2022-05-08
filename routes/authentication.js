@@ -81,7 +81,7 @@ router.get('/private', routeGuard, (req, res, next) => {
     .populate('creator')
     .then((createdCourses) => {
       Enroll.find({ userId: req.user._id })
-        .populate('courseId')
+        .populate({ path: 'courseId', populate: { path: 'creator' } })
         .then((enrollments) => {
           res.render('private', { createdCourses, enrollments });
         })
@@ -93,6 +93,29 @@ router.get('/private', routeGuard, (req, res, next) => {
       next(error);
     });
 });
+
+//  POST - '/private'
+router.post(
+  '/private',
+  routeGuard,
+  fileUpload.single('picture'),
+  (req, res, next) => {
+    let picture;
+    if (req.file) {
+      picture = req.file.path;
+    }
+    User.findByIdAndUpdate(req.user._id, {
+      picture
+    })
+      .then((user) => {
+        res.redirect('/authentication/private');
+      })
+      .catch((error) => {
+        console.log(error);
+        next(error);
+      });
+  }
+);
 
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
@@ -166,6 +189,7 @@ router.post(
 
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
+  req.user = undefined;
   res.redirect('/');
 });
 

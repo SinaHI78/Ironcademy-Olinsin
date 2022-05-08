@@ -8,7 +8,7 @@
 - Sign Up - Allows visitors to create an account/profile / Also link to sign in page for existing users✅
 - Sign In - Allows existing users to sign in / Also link to sign up page for new users✅
 - Course create page - allowing signed in users to create their own courses✅
-- Edit page - allows creator of course to edit course
+- Edit page - allows creator of course to edit course✅
 - Private page and my Courses - displays my enrolled courses, my created courses, and my profile✅
 
 ## Route Handlers
@@ -23,9 +23,11 @@
 
 - Authenticated Users
   POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message. Display single course page. (👻Sina)✅
-  POST - '/course/:id/unenroll' - Handles deletion of user in specific course (👻Sina)
-  GET - '/course-create' - Displays the course creation page (👻Sina)/(🦆Oliver)✅
-  POST - '/course/create' - Handles new course creation / Redirect to Private page✅
+  POST - '/course/:id/unenroll' - Handles deletion of user in specific course (👻Sina)✅
+  GET - 'authentication/private' - Shows profile page end enrolled courses as well as created courses✅
+  POST - 'authentication/private' - Upload of profile picture (👻Sina)✅
+  GET - '/creator/course-create' - Displays the course creation page (👻Sina)/(🦆Oliver)✅
+  POST - '/creator/course/create' - Handles new course creation / Redirect to Private page✅
   POST - '/authentication/sign-out' - Handles user sign-out / Redirect to home page✅
 
 - Creator
@@ -82,26 +84,24 @@
 - Use GitHub Projects in order to better organize
 - The columns of your kanban board should be: To do, In progress, Done and Whishlist.
 
-## Next step
-
-- create the ironmaker NPX
-- move this read.me to new project
-- create project board on gitHub
-
 ## TA Input
 
 Users can:
 
 1. Sign up
-2. Create course
-3. Enroll in course
-4. View list of courses
-5. Delete or update course
+2. Sign in
+3. Create course
+4. Enroll in course
+5. Edit created course
+6. Delete course
+7. View list of courses
+8. Add profile picture
+9. Add course picture
 
-Course creation
+Course creation:
 
 1. Title
-2. Cover picture
+2. Picture
 3. Description
 4. Timing
 5. Cost

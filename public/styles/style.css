@@ -86,4 +86,12 @@ label {
   margin-bottom: 0.5em;
 }
 
+#course-picture {
+  width: 10em;
+}
+
+#user-picture {
+  width: 5em;
+}
+
 /*# sourceMappingURL=style.css.map */
