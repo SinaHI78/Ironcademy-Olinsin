@@ -94,4 +94,8 @@ label {
   width: 5em;
 }
 
+button {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=style.css.map */

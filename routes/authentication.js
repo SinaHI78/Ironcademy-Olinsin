@@ -7,6 +7,7 @@ const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const Course = require('./../models/course');
 const Enroll = require('./../models/enroll');
+const Like = require('./../models/likes');
 const routeGuard = require('../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
 
@@ -186,6 +187,53 @@ router.post(
       });
   }
 );
+
+//  POST - 'course/:id/like' - Handles course likes (🦆Oliver)
+
+router.post('/course/:id/like', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  Like.findOne({ publication: id, user: req.user._id })
+    .then((like) => {
+      if (like) {
+        throw new Error('USER_CANNOT_LIKE_COURSE_TWICE');
+      } else {
+        return Like.create({ course: id, user: req.user._id });
+      }
+    })
+    .then(() => {
+      return Like.count({ course: id });
+    })
+    .then((likeCounter) => {
+      console.log(likeCounter);
+      return Course.findByIdAndUpdate(id, { likeCounter });
+    })
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+//  POST - 'course/:id/like' - Handles course unlikes (🦆Oliver)
+
+router.post('/course/:id/unlike', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  Like.findOneAndDelete({ course: id, user: req.user._id })
+    .then(() => {
+      return Like.count({ course: id });
+    })
+    .then((likeCounter) => {
+      console.log(likeCounter);
+      return Course.findByIdAndUpdate(id, { likeCounter });
+    })
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
 
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
