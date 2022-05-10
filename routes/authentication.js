@@ -1,8 +1,6 @@
 'use strict';
 
 const { Router } = require('express');
-let a;
-
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const Course = require('./../models/course');
