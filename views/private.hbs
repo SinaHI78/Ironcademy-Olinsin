@@ -74,9 +74,9 @@
     {{courseId.creator.name}}
     <br />
   </div>
-  <form method="POST" action="/authentication/course/{{courseId._id}}/unenroll">
+  <form method="POST" action="/course/course/{{courseId._id}}/unenroll">
     <button>Unenroll from this course</button>
   </form>
 {{/each}}
 
-<a href="/authentication/course-create">Create your own course!</a>
+<a href="/course/course-create">Create your own course!</a>

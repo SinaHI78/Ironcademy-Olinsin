@@ -162,6 +162,7 @@
               </div>
             </div>
           </div>
+<<<<<<< HEAD
 
       {{#each courses}}
           <div class="col">
@@ -220,6 +221,38 @@
               </div>
             </div>
           </div>
+=======
+  {{#each courses}}
+    <div>
+      <br />
+      <a href="/course/{{_id}}">{{title}}
+        <br />
+        {{#if picture}}
+          <img id="course-picture" src="{{picture}}" alt="" />
+        {{/if}}
+      </a>
+      <br />
+      {{schedule}}
+      <br />
+      €{{cost}}
+      <br />
+      <form method="POST" action="/course/course/{{_id}}/enroll">
+        <button>Enroll</button>
+      </form>
+      <span>Likes:{{likeCounter}}</span>
+      {{#if liked}}
+        <form method="POST" action="/course/course/{{_id}}/unlike">
+
+          <button>Liked</button>
+        </form>
+      {{else}}
+        <form method="POST" action="/course/course/{{_id}}/like">
+
+          <button>Like</button>
+        </form>
+      {{/if}}
+      <hr />
+>>>>>>> 445af5c01e2c00999dacc58a2fcfeeca97121c06
     </div>
   {{/each}}              
   

@@ -1,8 +1,6 @@
 'use strict';
 
 const { Router } = require('express');
-let a;
-
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const Course = require('./../models/course');
@@ -117,123 +115,6 @@ router.post(
       });
   }
 );
-
-// POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
-router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
-  const { id } = req.params;
-  Enroll.create({
-    userId: req.user._id, // req.session.userId
-    courseId: id
-  })
-    .then((enroll) => {
-      if (!enroll) {
-        throw new Error('COURSE_NOT_FOUND');
-      } else {
-        Course.findById(id)
-          .populate('creator')
-          .then((course) => {
-            res.render('single-course', { course });
-          });
-      }
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-
-// POST - '/course/:id/unenroll' - Handles deletion of user in specific course
-router.post('/course/:id/unenroll', routeGuard, (req, res, next) => {
-  const { id } = req.params;
-  console.log('This is the id:', id);
-  Enroll.findOneAndDelete({ userId: req.user._id, courseId: id })
-    .then(() => {
-      res.redirect('/authentication/private');
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-
-//  GET - '/course/create' - Displays the course creation page (🦆Oliver)
-router.get('/course-create', routeGuard, (req, res, next) => {
-  res.render('course-create');
-});
-
-//  POST - '/course-create' - Handles new course creation / Redirect to Profile page (🦆Oliver)
-router.post(
-  '/course-create',
-  routeGuard,
-  fileUpload.single('picture'),
-  (req, res, next) => {
-    const { title, cost, schedule, description } = req.body;
-    let picture;
-    if (req.file) {
-      picture = req.file.path;
-    }
-    Course.create({
-      title,
-      description,
-      cost,
-      picture,
-      schedule,
-      creator: req.user._id
-    })
-      .then((course) => {
-        res.redirect('/authentication/private');
-      })
-      .catch((error) => {
-        console.log(error);
-        next(error);
-      });
-  }
-);
-
-//  POST - 'course/:id/like' - Handles course likes (🦆Oliver)
-
-router.post('/course/:id/like', routeGuard, (req, res, next) => {
-  const { id } = req.params;
-  Like.findOne({ publication: id, user: req.user._id })
-    .then((like) => {
-      if (like) {
-        throw new Error('USER_CANNOT_LIKE_COURSE_TWICE');
-      } else {
-        return Like.create({ course: id, user: req.user._id });
-      }
-    })
-    .then(() => {
-      return Like.count({ course: id });
-    })
-    .then((likeCounter) => {
-      console.log(likeCounter);
-      return Course.findByIdAndUpdate(id, { likeCounter });
-    })
-    .then(() => {
-      res.redirect('/');
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-
-//  POST - 'course/:id/like' - Handles course unlikes (🦆Oliver)
-
-router.post('/course/:id/unlike', routeGuard, (req, res, next) => {
-  const { id } = req.params;
-  Like.findOneAndDelete({ course: id, user: req.user._id })
-    .then(() => {
-      return Like.count({ course: id });
-    })
-    .then((likeCounter) => {
-      console.log(likeCounter);
-      return Course.findByIdAndUpdate(id, { likeCounter });
-    })
-    .then(() => {
-      res.redirect('/');
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
 
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();

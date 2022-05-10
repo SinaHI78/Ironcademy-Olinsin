@@ -13,6 +13,7 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 const baseRouter = require('./routes/base');
 const authenticationRouter = require('./routes/authentication');
 const creatorRouter = require('./routes/creator');
+const courseRouter = require('./routes/course');
 
 const app = express();
 
@@ -44,8 +45,8 @@ app.use(
       httpOnly: true
     },
     store: connectMongo.create({
-    mongoUrl: process.env.MONGODB_URI,
-    ttl: 60 * 60
+      mongoUrl: process.env.MONGODB_URI,
+      ttl: 60 * 60
     })
   })
 );
@@ -55,6 +56,7 @@ app.use(bindUserToViewLocals);
 app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/creator', creatorRouter);
+app.use('/course', courseRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
