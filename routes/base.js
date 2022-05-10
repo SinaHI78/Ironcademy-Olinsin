@@ -12,7 +12,7 @@ const Like = require('../models/likes');
 router.get('/', (req, res, next) => {
   let courses;
   Course.find()
-    .sort({ createdAt: -1 })
+    .sort({ likeCounter: -1 })
     .then((courseDocuments) => {
       courses = courseDocuments;
       if (!req.user) {
@@ -30,21 +30,6 @@ router.get('/', (req, res, next) => {
         return { ...course.toJSON(), liked };
       });
       res.render('home', { courses: mappedCourses });
-    })
-    .catch((error) => {
-      next(error);
-    });
-});
-
-// Renders Single Course page
-router.get('/course/:id', (req, res, next) => {
-  const { id } = req.params;
-  Course.findById(id)
-    .populate('creator')
-    .then((course) => {
-      let userIsCreator =
-        req.user && String(req.user._id) === String(course.creator._id);
-      res.render('single-course', { course, userIsCreator });
     })
     .catch((error) => {
       next(error);
