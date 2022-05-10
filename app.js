@@ -44,8 +44,8 @@ app.use(
       httpOnly: true
     },
     store: connectMongo.create({
-      mongoUrl: process.env.MONGODB_URI,
-      ttl: 60 * 60
+    mongoUrl: process.env.MONGODB_URI,
+    ttl: 60 * 60
     })
   })
 );
