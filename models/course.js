@@ -10,7 +10,7 @@ const courseSchema = new mongoose.Schema(
     },
     picture: {
       type: String,
-      default: ''
+      default: '/images/course-default-picture.svg'
     },
     description: {
       type: String,
@@ -29,6 +29,11 @@ const courseSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       required: true,
       ref: 'User'
+    },
+    likeCounter: {
+      type: Number,
+      required: true,
+      default: 0
     }
   },
   { timestamps: true }

@@ -1,11 +1,13 @@
 'use strict';
 
 const { Router } = require('express');
+let a;
 
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
 const Course = require('./../models/course');
 const Enroll = require('./../models/enroll');
+const Like = require('./../models/likes');
 const routeGuard = require('../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
 
@@ -35,8 +37,8 @@ router.post('/sign-up', (req, res, next) => {
         });
       })
       .then((user) => {
-        // req.session.userId = user._id;
-        res.redirect('/authentication/sign-in');
+        req.session.userId = user._id;
+        res.redirect('/home');
       })
       .catch((error) => {
         next(error);
@@ -80,7 +82,7 @@ router.get('/private', routeGuard, (req, res, next) => {
     .populate('creator')
     .then((createdCourses) => {
       Enroll.find({ userId: req.user._id })
-        .populate('courseId')
+        .populate({ path: 'courseId', populate: { path: 'creator' } })
         .then((enrollments) => {
           res.render('private', { createdCourses, enrollments });
         })
@@ -92,6 +94,29 @@ router.get('/private', routeGuard, (req, res, next) => {
       next(error);
     });
 });
+
+//  POST - '/private'
+router.post(
+  '/private',
+  routeGuard,
+  fileUpload.single('picture'),
+  (req, res, next) => {
+    let picture;
+    if (req.file) {
+      picture = req.file.path;
+    }
+    User.findByIdAndUpdate(req.user._id, {
+      picture
+    })
+      .then((user) => {
+        res.redirect('/authentication/private');
+      })
+      .catch((error) => {
+        console.log(error);
+        next(error);
+      });
+  }
+);
 
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
@@ -163,8 +188,56 @@ router.post(
   }
 );
 
+//  POST - 'course/:id/like' - Handles course likes (🦆Oliver)
+
+router.post('/course/:id/like', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  Like.findOne({ publication: id, user: req.user._id })
+    .then((like) => {
+      if (like) {
+        throw new Error('USER_CANNOT_LIKE_COURSE_TWICE');
+      } else {
+        return Like.create({ course: id, user: req.user._id });
+      }
+    })
+    .then(() => {
+      return Like.count({ course: id });
+    })
+    .then((likeCounter) => {
+      console.log(likeCounter);
+      return Course.findByIdAndUpdate(id, { likeCounter });
+    })
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+//  POST - 'course/:id/like' - Handles course unlikes (🦆Oliver)
+
+router.post('/course/:id/unlike', routeGuard, (req, res, next) => {
+  const { id } = req.params;
+  Like.findOneAndDelete({ course: id, user: req.user._id })
+    .then(() => {
+      return Like.count({ course: id });
+    })
+    .then((likeCounter) => {
+      console.log(likeCounter);
+      return Course.findByIdAndUpdate(id, { likeCounter });
+    })
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
+  req.user = undefined;
   res.redirect('/');
 });
 

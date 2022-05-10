@@ -1,17 +1,23 @@
 <h2>Course details:</h2>
 <div>
   {{course.title}}
-  {{course.picture}}
+  <br />
+  {{#if course.picture}}
+    <img id="course-picture" src="{{course.picture}}" alt="Course Image" />
+  {{/if}}
+  <br />
   {{course.description}}
+  <br />
   {{course.schedule}}
-  {{course.cost}}
+  <br />
+  €{{course.cost}}
+  <br />
   {{course.creator.name}}
+  <hr />
 </div>
 {{#if userIsCreator}}
   <a href="/creator/course/{{course._id}}/edit" class="btn">Edit Course</a>
-
   <form method="POST" action="/course/{{course._id}}/delete">
     <button>Delete Course</button>
   </form>
-
 {{/if}}

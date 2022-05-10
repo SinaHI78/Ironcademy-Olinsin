@@ -2,16 +2,19 @@
 
 <form
   method="POST"
-  action="/creator/course/:id/edit"
+  action="/creator/course/{{course._id}}/edit"
   enctype="multipart/form-data"
 >
-
+  <label for="course-title">Title:</label>
   <input type="text" name="title" value="{{course.title}}" />
+  <label for="course-description">Description:</label>
   <textarea name="description">{{course.description}}</textarea>
+  <label for="course-cost">Cost (€):</label>
   <input type="text" name="cost" value="{{course.cost}}" />
+  <label for="course-schedule">Schedule:</label>
   <input type="text" name="schedule" value="{{course.schedule}}" />
-  <img src="{{course.picture}}" />
-  <input type="file" name="picture" accept="image/*" name="picture" />
+  <img id="course-picture" src="{{course.picture}}" />
+  <input type="file" name="picture" accept="image/*" />
 
   <button>Edit your course!</button>
 </form>

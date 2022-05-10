@@ -1,40 +1,82 @@
 <h1>Private</h1>
-<p>This page should only be accessible to authenticated users.</p>
+
 <span><strong>Name</strong>: {{user.name}}</span>
 <br />
 <span><strong>Email</strong>: {{user.email}}</span>
+<br />
+
+{{#if user.picture}}
+  <img id="user-picture" src="{{user.picture}}" alt="Profile Picture" />
+{{/if}}
+<hr />
+
+<form
+  method="POST"
+  action="/authentication/private"
+  enctype="multipart/form-data"
+>
+  <label for="profile-picture">Add your profile picture here:</label>
+  <input id="profile-picture" type="file" name="picture" accept="image/*" />
+  <button>Add picture</button>
+</form>
+
 <hr />
 <h1>Your created courses</h1>
 <hr />
+
 {{#each createdCourses}}
   <h2>Course details:</h2>
   <div>
     <a href="/course/{{_id}}">{{title}}</a>
-    {{picture}}
+    <br />
+    {{#if picture}}
+      <img id="course-picture" src="{{picture}}" alt="Course Picture" />
+    {{/if}}
+    <br />
     {{description}}
+    <br />
     {{schedule}}
-    {{cost}}
+    <br />
+    €{{cost}}
+    <br />
     {{creator.name}}
+    <br />
   </div>
   <a href="/creator/course/{{_id}}/edit" class="btn">Edit Course</a>
   <form method="POST" action="/creator/course/{{_id}}/delete">
     <button>Delete Course</button>
   </form>
 {{/each}}
+
 <hr />
 <h1>Enrolled in:</h1>
 <hr />
+
 {{#each enrollments}}
   <h2>Course details:</h2>
   <div>
     <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
-    {{courseId.picture}}
+    <br />
+    {{#if courseId.picture}}
+      <img
+        id="course-picture"
+        src="{{courseId.picture}}"
+        alt="Course Picture"
+      />
+    {{/if}}
+    <br />
     {{courseId.description}}
+    <br />
     {{courseId.schedule}}
-    {{courseId.cost}}
+    <br />
+    €{{courseId.cost}}
+    <br />
     {{courseId.creator.name}}
+    <br />
   </div>
   <form method="POST" action="/authentication/course/{{courseId._id}}/unenroll">
     <button>Unenroll from this course</button>
   </form>
 {{/each}}
+
+<a href="/authentication/course-create">Create your own course!</a>
