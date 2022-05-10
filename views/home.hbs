@@ -3,7 +3,7 @@
     <p>Your platform for fun learning and creating courses</p>
   </header>
 
-  <a href="/authentication/course-create">Create your own course!</a>
+  <a href="/course/course-create">Create your own course!</a>
 
     <h3>Our most popular courses:</h3>
   <div class="album py-5 bg-light">
@@ -125,17 +125,17 @@
       <br />
       €{{cost}}
       <br />
-      <form method="POST" action="/authentication/course/{{_id}}/enroll">
+      <form method="POST" action="/course/course/{{_id}}/enroll">
         <button>Enroll</button>
       </form>
       <span>Likes:{{likeCounter}}</span>
       {{#if liked}}
-        <form method="POST" action="/authentication/course/{{_id}}/unlike">
+        <form method="POST" action="/course/course/{{_id}}/unlike">
 
           <button>Liked</button>
         </form>
       {{else}}
-        <form method="POST" action="/authentication/course/{{_id}}/like">
+        <form method="POST" action="/course/course/{{_id}}/like">
 
           <button>Like</button>
         </form>

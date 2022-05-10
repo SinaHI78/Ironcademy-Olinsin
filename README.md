@@ -67,7 +67,7 @@
 ## Wishlist
 
 - "Interested in" button - display the course on your profile page
-- Course rating - if enrolled to course you can rate it with stars, the higher the course is rated, the further up it will be displayed
+- Course rating - if enrolled to course you can rate it with stars, the higher the course is rated, the further up it will be displayed ✅
 - Nodemailer - Send email with course info to enrolled users
 - Search field
 
