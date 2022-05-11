@@ -25,6 +25,11 @@ body {
   padding: 0 1em;
 }
 
+#banner {
+  text-align: center;
+  background-image: url('');
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -104,6 +109,23 @@ label {
 
 #user-picture {
   width: 5em;
+}
+
+#error-message {
+  font-size: 2em;
+  text-align: center;
+  padding: 1em;
+}
+#error-status {
+  font-size: 1em;
+  text-align: center;
+  padding: 1em;
+}
+
+#error-stack {
+  font-size: 0.8em;
+  text-align: center;
+  padding: 1em;
 }
 
 button {

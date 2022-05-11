@@ -30,8 +30,9 @@ router.get('/course/:id', (req, res, next) => {
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  Enroll.findOne({ courseId: id, user: req.user._id })
+  Enroll.findOne({ courseId: id, userId: req.user._id })
     .then((enroll) => {
+      console.log(enroll);
       if (enroll) {
         throw new Error('USER_CANNOT_ENROLL_IN_COURSE_TWICE');
       } else {
