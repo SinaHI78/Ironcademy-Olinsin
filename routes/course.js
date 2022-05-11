@@ -103,7 +103,6 @@ router.post('/course/:id/like', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Like.findOne({ course: id, user: req.user._id })
     .then((like) => {
-      console.log(like);
       if (like) {
         throw new Error('USER_CANNOT_LIKE_COURSE_TWICE');
       } else {
