@@ -2,13 +2,21 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #f8bbbe;
+}
+
 body {
   max-width: 52em;
-  padding: 0 1em;
   margin: 0 auto;
   font-family: sans-serif;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #5a5a5a;
   line-height: 2;
+}
+
+#body-content {
+  padding: 0 1em;
 }
 
 a {
@@ -18,11 +26,18 @@ a {
 
 nav {
   display: flex;
+  background-color: #78c2ad;
+  height: 57px;
+  width: 100%;
+  font-size: 1.2em;
+  color: white;
+  box-sizing: border-box;
+  padding: 0 1em 0 1em;
 }
 
 nav a,
 nav button {
-  padding: 1em 0;
+  padding: 0.5em 0;
   border: 0;
 }
 
