@@ -20,7 +20,6 @@ router.get('/', (req, res, next) => {
       } else {
         Like.find({ course: { $in: ids }, user: req.user._id }).then(
           (likes) => {
-            console.log(likes);
             const mappedCourses = courseDocuments.map((course) => {
               const liked = likes.some((like) => {
                 return String(like.course) === String(course._id);

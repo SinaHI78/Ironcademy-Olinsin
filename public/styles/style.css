@@ -3,7 +3,7 @@
 }
 
 html {
-  background-color: #f8bbbe;
+  background-color: #2e4053;
 }
 
 body {
@@ -21,7 +21,10 @@ body {
 
 #banner {
   text-align: center;
-  background-image: url("");
+  color: red;
+  background-image: url("/images/hero.jpg");
+  background-size: cover;
+  height: 30em;
 }
 
 a {
