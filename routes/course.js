@@ -63,7 +63,7 @@ router.post('/course/:id/unenroll', routeGuard, (req, res, next) => {
     });
 });
 
-//  GET - '/course/create' - Displays the course creation page (🦆Oliver)
+//  GET - '/course-create' - Displays the course creation page (🦆Oliver)
 router.get('/course-create', routeGuard, (req, res, next) => {
   res.render('course-create');
 });
