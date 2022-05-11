@@ -8,14 +8,26 @@ $grey: hsl(0, 0, 90%);
     box-sizing: border-box;
   }
 }
+html {
+  background-color: #f8bbbe;
+}
 
 body {
   max-width: 52em;
-  padding: 0 1em;
   margin: 0 auto;
   font-family: sans-serif;
   font-family: $font-sans;
+  color: #5a5a5a;
   line-height: 2;
+}
+
+#body-content {
+  padding: 0 1em;
+}
+
+#banner {
+  text-align: center;
+  background-image: url('');
 }
 
 a {
@@ -25,9 +37,16 @@ a {
 
 nav {
   display: flex;
+  background-color: #78c2ad;
+  height: 57px;
+  width: 100%;
+  font-size: 1.2em;
+  color: white;
+  box-sizing: border-box;
+  padding: 0 1em 0 1em;
   a,
   button {
-    padding: 1em 0;
+    padding: 0.5em 0;
     border: 0;
     &:not(:last-child) {
       margin-right: 1em;
@@ -90,6 +109,23 @@ label {
 
 #user-picture {
   width: 5em;
+}
+
+#error-message {
+  font-size: 2em;
+  text-align: center;
+  padding: 1em;
+}
+#error-status {
+  font-size: 1em;
+  text-align: center;
+  padding: 1em;
+}
+
+#error-stack {
+  font-size: 0.8em;
+  text-align: center;
+  padding: 1em;
 }
 
 button {
