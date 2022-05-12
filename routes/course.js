@@ -30,10 +30,15 @@ router.get('/course/:id', (req, res, next) => {
 // POST - '/course/:id/enroll' - Handles course enrollment requests for authenticated users. Display successful enrollment message.
 router.post('/course/:id/enroll', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  Enroll.create({
-    userId: req.user._id, // req.session.userId
-    courseId: id
-  })
+  Enroll.findOne({ courseId: id, userId: req.user._id })
+    .then((enroll) => {
+      console.log(enroll);
+      if (enroll) {
+        throw new Error('USER_CANNOT_ENROLL_IN_COURSE_TWICE');
+      } else {
+        return Enroll.create({ userId: req.user._id, courseId: id });
+      }
+    })
     .then((enroll) => {
       if (!enroll) {
         throw new Error('COURSE_NOT_FOUND');
@@ -63,7 +68,7 @@ router.post('/course/:id/unenroll', routeGuard, (req, res, next) => {
     });
 });
 
-//  GET - '/course/create' - Displays the course creation page (🦆Oliver)
+//  GET - '/course-create' - Displays the course creation page (🦆Oliver)
 router.get('/course-create', routeGuard, (req, res, next) => {
   res.render('course-create');
 });
@@ -103,7 +108,6 @@ router.post('/course/:id/like', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Like.findOne({ course: id, user: req.user._id })
     .then((like) => {
-      console.log(like);
       if (like) {
         throw new Error('USER_CANNOT_LIKE_COURSE_TWICE');
       } else {

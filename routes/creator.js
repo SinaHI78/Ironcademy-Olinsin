@@ -7,7 +7,6 @@ const routeGuard = require('../middleware/route-guard');
 const fileUpload = require('./../middleware/file-upload');
 
 //POST - '/course/:id/delete' - Handles course delete requests only for creator/ Refresh Private page(🐝Inger)
-//input: use form button on private page
 router.post('/course/:id/delete', routeGuard, (req, res, next) => {
   const { id } = req.params;
   Course.findOneAndDelete({ _id: id, creator: req.user._id })
@@ -57,7 +56,7 @@ router.post(
     })
 
       .then(() => {
-        res.redirect(`/course/${id}`);
+        res.redirect(`/course/course/${id}`);
       })
       .catch((error) => {
         next(error);

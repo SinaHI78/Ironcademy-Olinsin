@@ -2,13 +2,25 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #2e4053;
+}
+
 body {
   max-width: 52em;
-  padding: 0 1em;
   margin: 0 auto;
   font-family: sans-serif;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #5a5a5a;
   line-height: 2;
+}
+
+#banner {
+  text-align: center;
+  color: red;
+  background-image: url("/images/hero.jpg");
+  background-size: cover;
+  height: 70vh;
 }
 
 a {
@@ -18,13 +30,19 @@ a {
 
 nav {
   display: flex;
-  background-color: #ffce67;
+  background-color: #78c2ad;
+  height: 57px;
+  width: 100%;
+  font-size: 1.2em;
+  color: white;
+  box-sizing: border-box;
+  padding: 0 1em 0 1em;
 }
 
 nav a,
 nav button {
-  padding: 0em 1em;
-  border: 5em;
+  padding: 0.5em 0;
+  border: 0;
 }
 
 nav a:not(:last-child),
@@ -38,7 +56,7 @@ nav button:first-child {
 }
 
 .btnColour {
-  background-color: #ffce67;
+  background-color: #78c2ad;
 }
 
 h1,
@@ -54,11 +72,6 @@ h2:not(:last-child),
 h3:not(:last-child),
 p:not(:last-child) {
   margin-bottom: 1rem;
-}
-
-.homeCards {
-  display: flex;
-  flex-direction: row;
 }
 
 img {
@@ -81,7 +94,6 @@ button,
   padding: 1em;
   border: 1px solid #e6e6e6;
   border-radius: 0;
-  margin-bottom: 1em;
   font: inherit;
   color: inherit;
   background-color: transparent;
@@ -96,16 +108,81 @@ label {
   margin-bottom: 0.5em;
 }
 
+.top {
+  text-align: center;
+}
+
+.add-edit-delete-btn {
+  display: inline-block;
+  align-items: center;
+  padding: 1em;
+  border: 1px solid #e6e6e6;
+  border-radius: 0;
+}
+
 #course-picture {
   width: 10em;
+  border-radius: 0.4rem;
+  border: 1px solid #5a5a5a;
 }
 
 #user-picture {
-  width: 5em;
+  width: 8em;
+  border-radius: 50%;
+  border: 1px solid #5a5a5a;
 }
 
-button {
+#profile-picture-btn {
+  position: relative;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
   cursor: pointer;
+  margin-top: 1rem;
+}
+
+#error-message {
+  font-size: 2em;
+  text-align: center;
+  padding: 1em;
+}
+
+#error-status {
+  font-size: 1em;
+  text-align: center;
+  padding: 1em;
+}
+
+#create-course {
+  padding: 0.5em;
+  background-color: #78c2ad;
+  /*color: white;*/
+}
+
+#error-stack {
+  font-size: 0.8em;
+  text-align: center;
+  padding: 1em;
+}
+
+.course-form button {
+  background-color: #78c2ad;
+  color: #fffbea;
+  border-radius: 8px;
+}
+
+.course-form h1 {
+  font-size: 2em;
+  padding-top: 8%;
+}
+
+.course-form input,
+.course-form textarea {
+  border-radius: 8px;
+}
+
+.course-form input[type='file'] {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

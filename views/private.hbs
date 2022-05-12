@@ -1,13 +1,15 @@
-<h1>Private</h1>
+<div class="top">
+  <h2>Private</h2>
 
-<span><strong>Name</strong>: {{user.name}}</span>
-<br />
-<span><strong>Email</strong>: {{user.email}}</span>
-<br />
-
-{{#if user.picture}}
-  <img id="user-picture" src="{{user.picture}}" alt="Profile Picture" />
-{{/if}}
+  <span><strong>Name</strong>: {{user.name}}</span>
+  <br />
+  <span><strong>Email</strong>: {{user.email}}</span>
+  <br />
+  <br />
+  {{#if user.picture}}
+    <img id="user-picture" src="{{user.picture}}" alt="Profile Picture" />
+  {{/if}}
+</div>
 <hr />
 
 <form
@@ -15,19 +17,20 @@
   action="/authentication/private"
   enctype="multipart/form-data"
 >
-  <label for="profile-picture">Add your profile picture here:</label>
-  <input id="profile-picture" type="file" name="picture" accept="image/*" />
-  <button>Add picture</button>
+  <label id="profile-picture-label" for="profile-picture">Add your profile
+    picture here:</label>
+  <input id="profile-picture-btn" type="file" name="picture" accept="image/*" />
+  <button class="add-edit-delete-btn">Add picture</button>
 </form>
 
 <hr />
-<h1>Your created courses</h1>
+<h2>Your created courses</h2>
 <hr />
 
 {{#each createdCourses}}
-  <h2>Course details:</h2>
+  <h3>Course details:</h3>
   <div>
-    <a href="/course/{{_id}}">{{title}}</a>
+    <a href="/course/course/{{_id}}">{{title}}</a>
     <br />
     {{#if picture}}
       <img id="course-picture" src="{{picture}}" alt="Course Picture" />
@@ -42,18 +45,18 @@
     {{creator.name}}
     <br />
   </div>
-  <a href="/creator/course/{{_id}}/edit" class="btn">Edit Course</a>
+  <a href="/creator/course/{{_id}}/edit" class="add-edit-delete-btn">Edit Course</a>
   <form method="POST" action="/creator/course/{{_id}}/delete">
-    <button>Delete Course</button>
+    <button class="add-edit-delete-btn">Delete Course</button>
   </form>
 {{/each}}
 
 <hr />
-<h1>Enrolled in:</h1>
+<h2>Enrolled in:</h2>
 <hr />
 
 {{#each enrollments}}
-  <h2>Course details:</h2>
+  <h3>Course details:</h3>
   <div>
     <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
     <br />
@@ -75,7 +78,7 @@
     <br />
   </div>
   <form method="POST" action="/course/course/{{courseId._id}}/unenroll">
-    <button>Unenroll from this course</button>
+    <button class="add-edit-delete-btn">Unenroll from this course</button>
   </form>
 {{/each}}
 
