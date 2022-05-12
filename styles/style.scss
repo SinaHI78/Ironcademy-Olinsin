@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  max-width: 80em;
+  max-width: 60em;
   margin: 0 auto;
   font-family: sans-serif;
   font-family: $font-sans;
@@ -23,11 +23,14 @@ body {
 }
 
 #banner {
+  padding: 3em;
   text-align: center;
   color: #ffffff;
   background-image: url('/images/apple.jpg');
   background-size: cover;
-  height: 100vh;
+  height: 600px;
+  background-color: #dcdcdc;
+  /*height: 100vh;*/
 }
 
 a {
@@ -38,12 +41,13 @@ a {
 nav {
   display: flex;
   background-color: #3e4444;
-  height: 57px;
+  height: 60px;
   width: 100%;
   font-size: 1.2em;
-  color: white;
+  color: #fefefa;
   box-sizing: border-box;
   padding: 0 1em 0 1em;
+  opacity: 0.9;
   a,
   button {
     padding: 0.5em 0;
@@ -111,14 +115,6 @@ label {
   text-align: center;
 }
 
-.add-edit-delete-btn {
-  display: inline-block;
-  align-items: center;
-  padding: 1em;
-  border: 1px solid $grey;
-  border-radius: 0;
-}
-
 #course-picture {
   width: 10em;
   border-radius: 0.4rem;
@@ -151,10 +147,24 @@ label {
   padding: 1em;
 }
 
+#container {
+  background-color: #dcdcdc;
+}
+
 #create-course {
-  padding: 0.5em;
-  background-color: #78c2ad;
-  /*color: white;*/
+  padding: 0.6em;
+  background-color: #82b74b;
+  border-radius: 8px;
+}
+
+#popular-courses {
+  text-align: center;
+  padding: 1em 0 0 0;
+}
+
+.col-md-4,
+.row {
+  background-color: #dcdcdc;
 }
 
 #error-stack {

@@ -1,61 +1,74 @@
 <div class="container">
-  <div id="banner">
-      <h1 class="fs-1 fw-1">Welcome to IronCademy!</h1>
+  <div class="row">
+    <div id="banner">
+      <h1>Welcome to IronCademy!</h1>
       <p>Your platform for fun learning and creating courses</p>
-      <br/>
-        <a type="button" id="create-course" href="/course/course-create">Create your own course!</a>
-  </div>
-  <h3>Our most popular courses:</h3>
-
-<div class="row">
-  {{#each courses}}
-    <div class="col-md-4">
-      <div class="card mb-4 shadow-sm">
-        <div class="picture">
-          {{#if picture}}
-            <img src="{{picture}}" alt="course_picture" class="card-img-top img-fluid rounded" style="width: 100%; height: 15vw; object-fit: cover"> 
-          {{/if}} 
-          {{#unless picture}}
-            <img src="/images/developer.JPG" alt="lake" class="card-img-top img-fluid rounded" style="width: 100%; height: 15vw; object-fit: cover">
-          {{/unless}}
-        </div>
-        <div class="card-body">
+      <a type="button" id="create-course" href="/course/course-create">Create
+        your own course</a>
+    </div>
+    <h3 id="popular-courses">Our most popular courses:</h3>
+    {{#each courses}}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="picture">
+            {{#if picture}}
+              <img
+                src="{{picture}}"
+                alt="course_picture"
+                class="card-img-top img-fluid rounded"
+                style="width: 100%; height: 15vw; object-fit: cover"
+              />
+            {{/if}}
+            {{#unless picture}}
+              <img
+                src="/images/developer.JPG"
+                alt="lake"
+                class="card-img-top img-fluid rounded"
+                style="width: 100%; height: 15vw; object-fit: cover"
+              />
+            {{/unless}}
+          </div>
+          <div class="card-body">
             <rect width="100%" height="100%" fill="#55595c"></rect>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em"><a href="/course/course/{{_id}}">{{title}}</a></text>
-                <p class="card-text">
-                 {{description}}
-                </p>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em"><a
+                href="/course/course/{{_id}}"
+                class="course-title"
+              >{{title}}</a></text>
+            <p class="card-text">
+              {{description}}
+            </p>
             <div class="d-flex justify-content-between aligh-items-center">
-                <div class="btn-group">
-                  {{!-- 1. View --}}
-                  <a href="#" class="btn btn-sm btn-outline-secondary"> View </a>
-                  {{!-- 2. Enroll --}}
-                  <form method="POST" action="/course/course/{{_id}}/enroll">                    
-                    <button class="btn btn-sm btn-outline-secondary"> Enroll </button>
+              <div class="btn-group">
+                {{! 1. View }}
+                <a href="#" class="btn btn-sm btn-outline-secondary"> View </a>
+                {{! 2. Enroll }}
+                <form method="POST" action="/course/course/{{_id}}/enroll">
+                  <button class="btn btn-sm btn-outline-secondary">
+                    Enroll
+                  </button>
+                </form>
+                {{! 3. Like }}
+                {{#if liked}}
+                  <form method="POST" action="/course/course/{{_id}}/unlike">
+                    <button class="btn btn-sm btn-outline-secondary">
+                      Liked
+                    </button>
                   </form>
-                  {{!-- 3. Like --}}
-                  {{#if liked}}
-                    <form method="POST" action="/course/course/{{_id}}/unlike">
-                      <button class="btn btn-sm btn-outline-secondary"> Liked </button>
-                    </form>
-                  {{else}}
-                    <form method="POST" action="/course/course/{{_id}}/like">
-                      <button class="btn btn-sm btn-outline-secondary"> Like </button>
-                    </form>
-                  {{/if}}
-                </div>
+                {{else}}
+                  <form method="POST" action="/course/course/{{_id}}/like">
+                    <button class="btn btn-sm btn-outline-secondary">
+                      Like
+                    </button>
+                  </form>
+                {{/if}}
+              </div>
             </div>
             <small class="text-muted">Likes:{{likeCounter}}</small>
+          </div>
         </div>
       </div>
-    </div>
-  {{/each}}
-</div>
-
-
-
-
-
+    {{/each}}
+  </div>
 
   {{!-- <section class="row row-cols-3">
 
@@ -123,8 +136,4 @@
     </div>
   {{/each}}
 </section> --}}
-</div>  
-
-      
-
-  
+</div>
