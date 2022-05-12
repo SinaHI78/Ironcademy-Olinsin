@@ -1,0 +1,231 @@
+<div>
+    <h1 class="fs-1 fw-1">Welcome to IronCademy!</h1>
+    <p>Your platform for fun learning and creating courses</p>
+</div>
+  <a href="/authentication/course-create">Create your own course!</a>
+
+    <h3>Our most popular courses:</h3>
+  <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="/images/lake.JPG" alt="lake" width="100%" height="225">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+              <div class="card-body">
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      View
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Enroll
+                    </button>
+                    {{#if liked}}
+                      <form method="POST" action="/authentication/course/{{_id}}/unlike">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Like
+                    </button>
+                    </form>
+                    {{else}}
+                    <form method="POST" action="/authentication/course/{{_id}}/like">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Like
+                    </button>
+                    </form>
+                    {{/if}}
+                  </div>
+                  <small class="text-muted">Likes:{{likeCounter}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+             <img src="/images/developer.JPG" alt="lake" width="100%" height="225">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+              <div class="card-body">
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      View
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Enroll
+                    </button>
+                    {{#if liked}}
+                      <form method="POST" action="/authentication/course/{{_id}}/unlike">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Like
+                    </button>
+                    </form>
+                    {{else}}
+                    <form method="POST" action="/authentication/course/{{_id}}/like">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Like
+                    </button>
+                    </form>
+                    {{/if}}
+                  </div>
+                  <small class="text-muted">Likes:{{likeCounter}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="/images/redsuit.JPG" alt="lake" width="100%" height="225">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+
+              <div class="card-body">
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      View
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Enroll
+                    </button>
+                    {{#if liked}}
+                      <form method="POST" action="/authentication/course/{{_id}}/unlike">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Like
+                    </button>
+                    </form>
+                    {{else}}
+                    <form method="POST" action="/authentication/course/{{_id}}/like">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Like
+                    </button>
+                    </form>
+                    {{/if}}
+                  </div>
+                </div>
+                  <small class="text-muted">Likes:{{likeCounter}}</small>
+              </div>
+            </div>
+          </div>
+
+    <div class="container">
+     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      {{#each courses}}
+          <div class="col">
+            <div class="card shadow-sm">
+            {{#if picture}}
+              <img src="{{picture}}" alt="course_picture" width="100%" height="225"> 
+            {{/if}}
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#55595c"></rect>
+              <text x="50%" y="50%" fill="#eceeef" dy=".3em"><a href="/course/{{_id}}">{{title}}</a></text>           
+            <div class="card-body">
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <form method="POST" action="/course/{{course._id}}">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      View
+                    </button>
+                    </form>
+                    <form method="POST" action="/authentication/course/{{_id}}/enroll">                    
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Enroll
+                    </button>
+                    </form>
+                    {{#if liked}}
+                      <form method="POST" action="/authentication/course/{{_id}}/unlike">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Like
+                    </button>
+                    </form>
+                    {{else}}
+                    <form method="POST" action="/authentication/course/{{_id}}/like">
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                    >
+                      Like
+                    </button>
+                    </form>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>   
+    </div>
+  {{/each}}
+
+  

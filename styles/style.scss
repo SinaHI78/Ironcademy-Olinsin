@@ -25,10 +25,11 @@ a {
 
 nav {
   display: flex;
+  background-color: #ffce67;
   a,
   button {
-    padding: 1em 0;
-    border: 0;
+    padding: 0em 1em;
+    border: 5em;
     &:not(:last-child) {
       margin-right: 1em;
     }
@@ -36,6 +37,10 @@ nav {
       margin-right: auto;
     }
   }
+}
+
+.btnColour {
+  background-color: #ffce67;
 }
 
 h1,
@@ -47,6 +52,11 @@ p {
   &:not(:last-child) {
     margin-bottom: 1rem;
   }
+}
+
+.homeCards {
+  display: flex;
+  flex-direction: row;
 }
 
 img {

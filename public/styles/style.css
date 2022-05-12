@@ -18,12 +18,13 @@ a {
 
 nav {
   display: flex;
+  background-color: #ffce67;
 }
 
 nav a,
 nav button {
-  padding: 1em 0;
-  border: 0;
+  padding: 0em 1em;
+  border: 5em;
 }
 
 nav a:not(:last-child),
@@ -34,6 +35,10 @@ nav button:not(:last-child) {
 nav a:first-child,
 nav button:first-child {
   margin-right: auto;
+}
+
+.btnColour {
+  background-color: #ffce67;
 }
 
 h1,
@@ -49,6 +54,11 @@ h2:not(:last-child),
 h3:not(:last-child),
 p:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+.homeCards {
+  display: flex;
+  flex-direction: row;
 }
 
 img {
