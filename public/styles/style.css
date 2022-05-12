@@ -1,32 +1,26 @@
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
 html {
-  background-color: #2e4053;
+  background-color: #82b74b;
 }
 
 body {
-  max-width: 52em;
+  max-width: 80em;
   margin: 0 auto;
   font-family: sans-serif;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #5a5a5a;
   line-height: 2;
 }
 
-#body-content {
-  padding: 0 1em;
-}
-
 #banner {
   text-align: center;
-  color: red;
-  background-image: url('/images/hero.jpg');
+  color: #ffffff;
+  background-image: url("/images/apple.jpg");
   background-size: cover;
-  height: 70vh;
+  height: 100vh;
 }
 
 a {
@@ -36,7 +30,7 @@ a {
 
 nav {
   display: flex;
-  background-color: #78c2ad;
+  background-color: #3e4444;
   height: 57px;
   width: 100%;
   font-size: 1.2em;
