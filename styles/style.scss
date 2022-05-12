@@ -57,6 +57,10 @@ nav {
   }
 }
 
+.btnColour {
+  background-color: #78c2ad;
+}
+
 h1,
 h2,
 h3,
@@ -88,7 +92,7 @@ button,
   padding: 1em;
   border: 1px solid $grey;
   border-radius: 0;
-  margin-bottom: 1em;
+  // margin-bottom: 1em;
   font: inherit;
   color: inherit;
   background-color: transparent;
@@ -159,9 +163,9 @@ label {
   padding: 1em;
 }
 
-button {
-  cursor: pointer;
-}
+// button {
+//   cursor: pointer;
+// }
 
 .course-form {
   button {
