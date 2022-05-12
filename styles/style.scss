@@ -9,7 +9,7 @@ $grey: hsl(0, 0, 90%);
   }
 }
 html {
-  background-color: #f8bbbe;
+  background-color: #2e4053;
 }
 
 body {
@@ -27,12 +27,10 @@ body {
 
 #banner {
   text-align: center;
-  background-image: url('/images/Yoga.jpg');
-  height: 400px;
-  background-position: center;
-  background-repeat: no-repeat;
+  color: red;
+  background-image: url('/images/hero.jpg');
   background-size: cover;
-  padding: 1em 0;
+  height: 70vh;
 }
 
 a {
@@ -166,4 +164,23 @@ label {
 
 button {
   cursor: pointer;
+}
+
+.course-form {
+  button {
+    background-color: #78c2ad;
+    color: #fffbea;
+    border-radius: 8px;
+  }
+  h1 {
+    font-size: 2em;
+    padding-top: 8%;
+  }
+  input,
+  textarea {
+    border-radius: 8px;
+  }
+  input[type='file'] {
+    display: none;
+  }
 }

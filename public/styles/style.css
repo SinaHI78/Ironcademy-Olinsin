@@ -1,16 +1,18 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
 html {
-  background-color: #f8bbbe;
+  background-color: #2e4053;
 }
 
 body {
   max-width: 52em;
   margin: 0 auto;
   font-family: sans-serif;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #5a5a5a;
   line-height: 2;
 }
@@ -21,12 +23,10 @@ body {
 
 #banner {
   text-align: center;
-  background-image: url("/images/Yoga.jpg");
-  height: 400px;
-  background-position: center;
-  background-repeat: no-repeat;
+  color: red;
+  background-image: url('/images/hero.jpg');
   background-size: cover;
-  padding: 1em 0;
+  height: 70vh;
 }
 
 a {
@@ -170,6 +170,26 @@ label {
 
 button {
   cursor: pointer;
+}
+
+.course-form button {
+  background-color: #78c2ad;
+  color: #fffbea;
+  border-radius: 8px;
+}
+
+.course-form h1 {
+  font-size: 2em;
+  padding-top: 8%;
+}
+
+.course-form input,
+.course-form textarea {
+  border-radius: 8px;
+}
+
+.course-form input[type='file'] {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
