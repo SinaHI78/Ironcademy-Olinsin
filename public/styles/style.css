@@ -21,7 +21,12 @@ body {
 
 #banner {
   text-align: center;
-  background-image: url("");
+  background-image: url("/images/Yoga.jpg");
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1em 0;
 }
 
 a {
@@ -106,12 +111,37 @@ label {
   margin-bottom: 0.5em;
 }
 
+.top {
+  text-align: center;
+}
+
+.add-edit-delete-btn {
+  display: inline-block;
+  align-items: center;
+  padding: 1em;
+  border: 1px solid #e6e6e6;
+  border-radius: 0;
+}
+
 #course-picture {
   width: 10em;
+  border-radius: 0.4rem;
+  border: 1px solid #5a5a5a;
 }
 
 #user-picture {
-  width: 5em;
+  width: 8em;
+  border-radius: 50%;
+  border: 1px solid #5a5a5a;
+}
+
+#profile-picture-btn {
+  position: relative;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
 }
 
 #error-message {
@@ -124,6 +154,12 @@ label {
   font-size: 1em;
   text-align: center;
   padding: 1em;
+}
+
+#create-course {
+  padding: 0.5em;
+  background-color: #78c2ad;
+  /*color: white;*/
 }
 
 #error-stack {
