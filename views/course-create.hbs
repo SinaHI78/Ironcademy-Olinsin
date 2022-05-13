@@ -6,7 +6,9 @@
     method="POST"
     action="/course/course-create"
     enctype="multipart/form-data"
+    class="form"
   >
+
     <label for="course-title">Title:</label>
     <input
       id="course-title"
@@ -14,12 +16,14 @@
       name="title"
       placeholder="Course title..."
     />
+
     <label for="course-description">Description:</label>
     <textarea
       id="course-description"
       name="description"
       placeholder="Describe it..."
     ></textarea>
+
     <label for="course-cost">Cost (€):</label>
     <input
       id="course-cost"
@@ -34,9 +38,8 @@
       name="schedule"
       placeholder="Set your timings"
     />
-    <label class="custom-file-upload" for="course-picture">Picture:</label>
+    <label class="btn-2" for="course-picture">Picture:</label>
     <input type="file" name="picture" accept="image/*" />
-
     <button>Create your course!</button>
   </form>
 
