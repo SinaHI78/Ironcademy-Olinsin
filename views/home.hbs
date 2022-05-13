@@ -40,7 +40,10 @@
             <div class="d-flex justify-content-between aligh-items-center">
               <div class="btn-group">
                 {{! 1. View }}
-                <a href="#" class="btn btn-sm btn-outline-secondary"> View </a>
+                <a
+                  href="/course/course/{{_id}}"
+                  class="btn btn-sm btn-outline-secondary"
+                > View </a>
                 {{! 2. Enroll }}
                 <form method="POST" action="/course/course/{{_id}}/enroll">
                   <button class="btn btn-sm btn-outline-secondary">

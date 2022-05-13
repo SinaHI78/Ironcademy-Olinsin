@@ -24,7 +24,7 @@ body {
 }
 
 #banner {
-  padding: 3em;
+  padding: 7em;
   text-align: center;
   color: #ffffff;
   background-image: url('/images/apple.jpg');
@@ -179,17 +179,43 @@ label {
 // }
 
 .course-form {
+  background-color: #dcdcdc;
+  padding-left: 3%;
+  padding: 3%;
   button {
-    background-color: #78c2ad;
-    color: #fffbea;
-    border-radius: 8px;
+    background-color: #82b74b;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 20vw;
+    font-size: 1.2em;
   }
   h1 {
     font-size: 2em;
     padding-top: 8%;
+    color: #34495e;
+    text-shadow: 2px 2px #c435353f;
   }
   input,
   textarea {
-    border-radius: 8px;
+    border-radius: 10px;
+    background-color: #ffffff;
   }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 1.2em;
+  }
+  #hero-form {
+    height: 30%;
+  }
+}
+
+.course-button {
+  display: flex;
+  justify-content: center;
+  padding: 3% 0;
+}
+#course-picture {
+  margin: 3%;
 }
