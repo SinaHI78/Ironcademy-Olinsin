@@ -17,15 +17,18 @@
   <body>
     <div class="navStyle">
       <nav>
-        <a href="/">Home</a>
+
+        <a href="/"><h3>⭕ IronCademy </h3></a>
+        <!-- <img id="icon" src="/images/navbar-icon.jpg" alt="Ironcademy icon" /> -->
+
         {{#if user}}
           <a href="/authentication/private">{{user.name}}'s Profile</a>
           <form action="/authentication/sign-out" method="GET">
-            <button type="submit">Sign Out</button>
+            <button type="submit">Sign out</button>
           </form>
         {{else}}
-          <a href="/authentication/sign-in">Sign In</a>
-          <a href="/authentication/sign-up">Sign Up</a>
+          <a href="/authentication/sign-in">Sign in</a>
+          <a href="/authentication/sign-up">Sign up</a>
         {{/if}}
       </nav>
     </div>

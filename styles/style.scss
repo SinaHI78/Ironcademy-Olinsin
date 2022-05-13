@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  max-width: 60em;
+  max-width: 75em;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -39,6 +39,15 @@ a {
   text-decoration: none;
 }
 
+#company {
+  margin-right: 22%;
+}
+
+.navStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 nav {
   display: flex;
   background-color: #3e4444;
@@ -60,6 +69,10 @@ nav {
       margin-right: auto;
     }
   }
+}
+#icon {
+  width: 6%;
+  height: 85%;
 }
 
 .btnColour {
@@ -218,4 +231,40 @@ label {
 }
 #course-picture {
   margin: 3%;
+}
+
+.authentication-form {
+  background-color: #dcdcdc;
+  padding-left: 3%;
+  padding: 3%;
+  button {
+    background-color: #82b74b;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 20vw;
+    font-size: 1.2em;
+  }
+  input {
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 1.2em;
+    padding: 0.5em;
+  }
+}
+
+.authentication-button {
+  display: flex;
+  justify-content: center;
+  padding: 3% 0;
+}
+
+#likeCounter {
+  font-family: Montserrat;
+  margin-top: 80%;
+  border: 1px solid gray;
+  padding: 1%;
 }
