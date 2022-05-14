@@ -70,7 +70,7 @@
             <br />
           </div>
             <a href="/creator/course/{{_id}}/edit" class="edit-btn">Edit Course</a>
-            <form method="POST" action="/creator/course/{{_id}}/delete">
+            <form class="form-private" method="POST" action="/creator/course/{{_id}}/delete">
               <button>Delete Course</button>
             </form>
           </div>  
@@ -111,20 +111,20 @@
             <div class="card-body">
               <rect width="100%" height="100%" fill="#55595c"></rect>
               <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
+                <a href="/course/{{courseId._id}}"><h4>{{courseId.title}}</h4></a>
               </text>
               <p class="card-text">
                 {{courseId.description}}
               </p> 
-                {{courseId.schedule}}
+                <strong>Timing:</strong>{{courseId.schedule}}
               <br />
-                €{{courseId.cost}}
+                <strong>Price:</strong> €{{courseId.cost}}
               <br />
-                {{courseId.creator.name}}
+                <strong>Instructor:</strong> {{courseId.creator.name}}
               <br />
             </div>
-              <form method="POST" action="/course/course/{{courseId._id}}/unenroll">
-                <button>Unenroll from this course</button>
+              <form class="form-private" method="POST" action="/course/course/{{courseId._id}}/unenroll">
+                <button>Unenroll</button>
               </form>  
           </div> 
         </div>    
@@ -134,5 +134,5 @@
 
       
 </div>
-  <a href="/course/course-create" id="create-course">Create your own course!</a>
+  <a class="edit-btn" href="/course/course-create" id="create-course">Create Course!</a>
 </div>

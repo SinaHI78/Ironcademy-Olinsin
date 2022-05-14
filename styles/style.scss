@@ -112,7 +112,7 @@ textarea,
 select,
 button,
 .btn {
-  padding: 1em;
+  padding: 0.5em;
   border: 1px solid $grey;
   border-radius: 0;
   // margin-bottom: 1em;
@@ -217,13 +217,21 @@ label {
 
 .edit-btn {
   width: 10em;
-  padding: 1em;
+  padding: 0.5em;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   background-color: #82b74b;
   color: #ffffff;
   font-size: 1.2em;
+  margin: 0 auto;
+}
+
+.form-private{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1em;
 }
 
 #user-picture {
