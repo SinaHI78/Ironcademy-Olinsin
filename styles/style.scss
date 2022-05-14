@@ -24,7 +24,8 @@ body {
 }
 
 #banner {
-  padding: 7em;
+  padding-top: 10em;
+  padding-right: 25em;
   text-align: center;
   color: #ffffff;
   background-image: url('/images/apple.jpg');
@@ -51,7 +52,7 @@ a {
 nav {
   display: flex;
   background-color: #3e4444;
-  height: 60px;
+  height: 80px;
   width: 100%;
   font-size: 1.2em;
   color: #fefefa;
@@ -60,7 +61,7 @@ nav {
   opacity: 0.9;
   a,
   button {
-    padding: 0.5em 0;
+    padding: 1em 0;
     border: 0;
     &:not(:last-child) {
       margin-right: 1em;
@@ -70,6 +71,10 @@ nav {
     }
   }
 }
+#logo {
+  padding: 0.5em;
+}
+
 #icon {
   width: 6%;
   height: 85%;
@@ -193,7 +198,8 @@ label {
 
 .edit-btn {
   width: 10em;
-  border-radius: 0.4rem;
+  padding: 1em;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   background-color: #82b74b;
@@ -202,7 +208,7 @@ label {
 }
 
 #user-picture {
-  width: 8em;
+  width: 10em;
   border-radius: 50%;
   border: 1px solid #5a5a5a;
 }
@@ -221,6 +227,7 @@ label {
   text-align: center;
   padding: 1em;
 }
+
 #error-status {
   font-size: 1em;
   text-align: center;
@@ -236,6 +243,17 @@ label {
   background-color: #82b74b;
   border-radius: 8px;
   color: #ffffff;
+}
+
+#create-course-private {
+  width: 10em;
+  padding: 1em;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: #82b74b;
+  color: #ffffff;
+  font-size: 1.2em;
 }
 
 #popular-courses {

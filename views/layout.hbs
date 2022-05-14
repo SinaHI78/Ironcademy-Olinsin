@@ -17,10 +17,7 @@
   <body>
     <div class="navStyle">
       <nav>
-
-        <a href="/"><h3>⭕ IronCademy </h3></a>
-        <!-- <img id="icon" src="/images/navbar-icon.jpg" alt="Ironcademy icon" /> -->
-
+        <a href="/" id="logo"><h3>⭕ IronCademy </h3></a>
         {{#if user}}
           <a href="/authentication/private">{{user.name}}'s Profile</a>
           <form action="/authentication/sign-out" method="GET">
