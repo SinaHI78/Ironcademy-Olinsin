@@ -1,6 +1,4 @@
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
@@ -12,7 +10,7 @@ body {
   max-width: 80em;
   margin: 0 auto;
   font-family: sans-serif;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #5a5a5a;
   line-height: 2;
 }
@@ -20,7 +18,7 @@ body {
 #banner {
   text-align: center;
   color: #ffffff;
-  background-image: url('/images/apple.jpg');
+  background-image: url("/images/apple.jpg");
   background-size: cover;
   height: 100vh;
 }
