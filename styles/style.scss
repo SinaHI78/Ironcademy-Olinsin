@@ -325,9 +325,19 @@ label {
 }
 
 .authentication-button {
-  display: flex;
-  justify-content: center;
+  //display: flex;
+  //flex-direction: row;
+  // justify-content: center;
+
+  width: 35vw;
   padding: 3% 0;
+  button {
+    //margin: auto;
+    margin-left: 20%;
+  }
+  p {
+    margin-left: 35%;
+  }
 }
 
 #likeCounter {
