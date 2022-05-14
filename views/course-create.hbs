@@ -1,12 +1,16 @@
 <div class="course-form">
 
+  <img id="hero-form" src="/images/hero-course.jpg" alt="Notebooks" />
+
   <h1>Create your own course and share the knowledge:</h1>
 
   <form
     method="POST"
     action="/course/course-create"
     enctype="multipart/form-data"
+    class="form"
   >
+
     <label for="course-title">Title:</label>
     <input
       id="course-title"
@@ -14,12 +18,15 @@
       name="title"
       placeholder="Course title..."
     />
+
     <label for="course-description">Description:</label>
     <textarea
       id="course-description"
       name="description"
       placeholder="Describe it..."
+      maxlength="500"
     ></textarea>
+
     <label for="course-cost">Cost (€):</label>
     <input
       id="course-cost"
@@ -32,12 +39,11 @@
       id="course-schedule"
       type="text"
       name="schedule"
-      placeholder="Set your timings"
+      placeholder="Set a timing"
     />
-    <label class="custom-file-upload" for="course-picture">Picture:</label>
+    <label for="course-picture">Picture:</label>
     <input type="file" name="picture" accept="image/*" />
-
-    <button>Create your course!</button>
+    <span class="course-button"> <button>Create your course!</button></span>
   </form>
 
 </div>

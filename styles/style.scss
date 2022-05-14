@@ -13,21 +13,25 @@ html {
 }
 
 body {
-  max-width: 80em;
+  max-width: 70em;
   margin: 0 auto;
-  font-family: sans-serif;
-  font-family: $font-sans;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  //font-family: $font-sans;
   color: #5a5a5a;
   line-height: 2;
   // background-color: #5a5a5a;
 }
 
 #banner {
+  padding: 7em;
   text-align: center;
   color: #ffffff;
   background-image: url('/images/apple.jpg');
   background-size: cover;
-  height: 100vh;
+  height: 600px;
+  background-color: #dcdcdc;
+  /*height: 100vh;*/
 }
 
 a {
@@ -35,15 +39,25 @@ a {
   text-decoration: none;
 }
 
+#company {
+  margin-right: 22%;
+}
+
+.navStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 nav {
   display: flex;
   background-color: #3e4444;
-  height: 57px;
+  height: 60px;
   width: 100%;
   font-size: 1.2em;
-  color: white;
+  color: #fefefa;
   box-sizing: border-box;
   padding: 0 1em 0 1em;
+  opacity: 0.9;
   a,
   button {
     padding: 0.5em 0;
@@ -55,6 +69,10 @@ nav {
       margin-right: auto;
     }
   }
+}
+#icon {
+  width: 6%;
+  height: 85%;
 }
 
 .btnColour {
@@ -109,20 +127,78 @@ label {
 
 .top {
   text-align: center;
+  background-color: #dcdcdc;
+  padding-left: 3%;
+  padding: 3%;
 }
 
-.add-edit-delete-btn {
-  display: inline-block;
-  align-items: center;
-  padding: 1em;
-  border: 1px solid $grey;
-  border-radius: 0;
+.single-view {
+  background-color: #dcdcdc;
+  text-align: center;
+  padding: 3%;
+  .btn {
+    display: flex;
+    justify-content: center;
+    background-color: #82b74b;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 10em;
+    font-size: 1.2em;
+  }
+  h1 {
+    font-size: 2em;
+    padding-top: 8%;
+    color: #34495e;
+    text-shadow: 2px 2px #c435353f;
+  }
+  h3 {
+    text-decoration: underline;
+  }
+  img {
+    padding: 0;
+  }
+}
+
+.private {
+  background-color: #dcdcdc;
+  padding: 3%;
+  button {
+    display: flex;
+    justify-content: center;
+    background-color: #82b74b;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 10em;
+    font-size: 1.2em;
+  }
+  h1 {
+    font-size: 2em;
+    padding-top: 8%;
+    color: #34495e;
+    text-shadow: 2px 2px #c435353f;
+  }
+  h3 {
+    text-decoration: underline;
+  }
+  img {
+    padding: 0;
+  }
 }
 
 #course-picture {
   width: 10em;
   border-radius: 0.4rem;
   border: 1px solid #5a5a5a;
+}
+
+.edit-btn {
+  width: 10em;
+  border-radius: 0.4rem;
+  display: flex;
+  justify-content: center;
+  background-color: #82b74b;
+  color: #ffffff;
+  font-size: 1.2em;
 }
 
 #user-picture {
@@ -151,10 +227,25 @@ label {
   padding: 1em;
 }
 
+#container {
+  background-color: #dcdcdc;
+}
+
 #create-course {
-  padding: 0.5em;
-  background-color: #78c2ad;
-  /*color: white;*/
+  padding: 0.6em;
+  background-color: #82b74b;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+#popular-courses {
+  text-align: center;
+  padding: 1em 0 0 0;
+}
+
+.col-md-4,
+.row {
+  background-color: #dcdcdc;
 }
 
 #error-stack {
@@ -168,20 +259,86 @@ label {
 // }
 
 .course-form {
+  background-color: #dcdcdc;
+  padding-left: 3%;
+  padding: 3%;
   button {
-    background-color: #78c2ad;
-    color: #fffbea;
-    border-radius: 8px;
+    background-color: #82b74b;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 20vw;
+    font-size: 1.2em;
   }
   h1 {
     font-size: 2em;
     padding-top: 8%;
+    color: #34495e;
+    text-shadow: 2px 2px #c435353f;
   }
   input,
   textarea {
-    border-radius: 8px;
+    border-radius: 10px;
+    background-color: #ffffff;
   }
-  input[type='file'] {
-    display: none;
+  label {
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 1.2em;
   }
+  #hero-form {
+    height: 30%;
+  }
+}
+
+.course-button {
+  display: flex;
+  justify-content: center;
+  padding: 3% 0;
+}
+
+#course-picture {
+  margin: 3%;
+}
+
+.authentication-form {
+  background-color: #dcdcdc;
+  padding-left: 3%;
+  padding: 3%;
+  button {
+    background-color: #82b74b;
+    color: #ffffff;
+    border-radius: 10px;
+    width: 20vw;
+    font-size: 1.2em;
+  }
+  input {
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 50%;
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 1.2em;
+    padding: 0.5em;
+  }
+}
+
+.authentication-button {
+  display: flex;
+  justify-content: center;
+  padding: 3% 0;
+}
+
+#likeCounter {
+  font-family: Montserrat;
+  margin-top: 80%;
+  border: 1px dotted gray;
+  padding: 1%;
+}
+
+#like-btn {
+  width: 25%;
+  padding: 0%;
+  margin: 0%;
 }

@@ -1,85 +1,138 @@
-<div class="top">
-  <h2>Private</h2>
+<div class="private">
+  <div class="top">
+    <h2>Your private page</h2>
+    <span><strong>Name</strong>: {{user.name}}</span>
+    <br />
+    <span><strong>Email</strong>: {{user.email}}</span>
+    <br />
+    <br />
+    {{#if user.picture}}
+      <img id="user-picture" src="{{user.picture}}" alt="Profile Picture" />
+    {{/if}}
+  </div>
+  <hr />
 
-  <span><strong>Name</strong>: {{user.name}}</span>
-  <br />
-  <span><strong>Email</strong>: {{user.email}}</span>
-  <br />
-  <br />
-  {{#if user.picture}}
-    <img id="user-picture" src="{{user.picture}}" alt="Profile Picture" />
-  {{/if}}
+  <div class="add-picture">
+    <form
+      method="POST"
+      action="/authentication/private"
+      enctype="multipart/form-data"
+    >
+      <label for="profile-picture">Add or change your profile picture:</label>
+      <input type="file" name="picture" accept="image/*" />
+      <button>Add picture</button>
+    </form>
+  </div>
+  <hr />
+  <h2>Your created courses</h2>
+  <hr />
+  <div class="created-courses">
+
+{{! Cards for my Created Courses }}
+  <div class="container">
+    <div class="row">
+
+    {{#each createdCourses}}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="picture">
+            {{#if picture}}
+              <img
+                src="{{picture}}"
+                alt="course_picture"
+                class="card-img-top img-fluid rounded"
+                style="width: 100%; height: 15vw; object-fit: cover"
+              />
+            {{/if}}
+            {{#unless picture}}
+              <img
+                src="/images/developer.JPG"
+                alt="lake"
+                class="card-img-top img-fluid rounded"
+                style="width: 100%; height: 15vw; object-fit: cover"
+              />
+            {{/unless}}
+          </div>
+          <div class="card-body">
+            <rect width="100%" height="100%" fill="#55595c"></rect>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em"><a
+                href="/course/course/{{_id}}"
+                class="course-title"
+              ><h4>{{title}}</h4></a></text>
+            <p class="card-text">
+              {{description}}
+            </p> 
+              <strong>Timing:</strong> {{schedule}}
+            <br />
+              <strong>Price:</strong> €{{cost}}
+            <br />
+              <strong>Instructor:</strong> {{creator.name}}
+            <br />
+          </div>
+            <a href="/creator/course/{{_id}}/edit" class="edit-btn">Edit Course</a>
+            <form method="POST" action="/creator/course/{{_id}}/delete">
+              <button>Delete Course</button>
+            </form>
+          </div>  
+        </div>    
+      {{/each}}
+    </div>
+  </div>
+  <hr />
+
+  <div>
+    <h2>Enrolled in:</h2>
+    <hr />
+
+{{! Cards for my Enrolled Courses }}
+  <div class="container">
+    <div class="row">  
+      {{#each enrollments}}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="picture">
+              {{#if courseId.picture}}
+                <img
+                  src="{{courseId.picture}}"
+                  alt="course_picture"
+                  class="card-img-top img-fluid rounded"
+                  style="width: 100%; height: 15vw; object-fit: cover"
+                />
+              {{/if}}
+              {{#unless courseId.picture}}
+                <img
+                  src="/images/developer.JPG"
+                  alt="lake"
+                  class="card-img-top img-fluid rounded"
+                  style="width: 100%; height: 15vw; object-fit: cover"
+                />
+              {{/unless}}
+            </div>
+            <div class="card-body">
+              <rect width="100%" height="100%" fill="#55595c"></rect>
+              <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
+              </text>
+              <p class="card-text">
+                {{courseId.description}}
+              </p> 
+                {{courseId.schedule}}
+              <br />
+                €{{courseId.cost}}
+              <br />
+                {{courseId.creator.name}}
+              <br />
+            </div>
+              <form method="POST" action="/course/course/{{courseId._id}}/unenroll">
+                <button>Unenroll from this course</button>
+              </form>  
+          </div> 
+        </div>    
+      {{/each}}
+    </div>
+  </div>
+
+      
 </div>
-<hr />
-
-<form
-  method="POST"
-  action="/authentication/private"
-  enctype="multipart/form-data"
->
-  <label id="profile-picture-label" for="profile-picture">Add your profile
-    picture here:</label>
-  <input id="profile-picture-btn" type="file" name="picture" accept="image/*" />
-  <button class="add-edit-delete-btn">Add picture</button>
-</form>
-
-<hr />
-<h2>Your created courses</h2>
-<hr />
-
-{{#each createdCourses}}
-  <h3>Course details:</h3>
-  <div>
-    <a href="/course/course/{{_id}}">{{title}}</a>
-    <br />
-    {{#if picture}}
-      <img id="course-picture" src="{{picture}}" alt="Course Picture" />
-    {{/if}}
-    <br />
-    {{description}}
-    <br />
-    {{schedule}}
-    <br />
-    €{{cost}}
-    <br />
-    {{creator.name}}
-    <br />
-  </div>
-  <a href="/creator/course/{{_id}}/edit" class="add-edit-delete-btn">Edit Course</a>
-  <form method="POST" action="/creator/course/{{_id}}/delete">
-    <button class="add-edit-delete-btn">Delete Course</button>
-  </form>
-{{/each}}
-
-<hr />
-<h2>Enrolled in:</h2>
-<hr />
-
-{{#each enrollments}}
-  <h3>Course details:</h3>
-  <div>
-    <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
-    <br />
-    {{#if courseId.picture}}
-      <img
-        id="course-picture"
-        src="{{courseId.picture}}"
-        alt="Course Picture"
-      />
-    {{/if}}
-    <br />
-    {{courseId.description}}
-    <br />
-    {{courseId.schedule}}
-    <br />
-    €{{courseId.cost}}
-    <br />
-    {{courseId.creator.name}}
-    <br />
-  </div>
-  <form method="POST" action="/course/course/{{courseId._id}}/unenroll">
-    <button class="add-edit-delete-btn">Unenroll from this course</button>
-  </form>
-{{/each}}
-
-<a href="/course/course-create">Create your own course!</a>
+  <a href="/course/course-create" id="create-course">Create your own course!</a>
+</div>

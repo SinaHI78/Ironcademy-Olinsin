@@ -10,7 +10,7 @@ const courseSchema = new mongoose.Schema(
     },
     picture: {
       type: String,
-      default: '/images/course-default-picture.svg'
+      default: '/images/lake.JPG'
     },
     description: {
       type: String,
