@@ -410,7 +410,7 @@ label {
   margin-top: 80%;
   border: 1px solid gray;
   padding: 1%;
-  margin-left: 84%;
+  margin-left: 80%;
 }
 
 #like-btn {
@@ -428,7 +428,7 @@ label {
   margin-top: 1%;
 }
 
-.card-blocks img:hover {
+.container img:hover {
   transform: scale(1.03);
 }
 
