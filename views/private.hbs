@@ -27,29 +27,56 @@
   <h2>Your created courses</h2>
   <hr />
   <div class="created-courses">
+
+{{! Cards for my Created Courses }}
+  <div class="container">
+    <div class="row">
+
     {{#each createdCourses}}
-      <h3>Course details:</h3>
-      <div>
-        <a href="/course/course/{{_id}}">{{title}}</a>
-        <br />
-        {{#if picture}}
-          <img id="course-picture" src="{{picture}}" alt="Course Picture" />
-        {{/if}}
-        <br />
-        {{description}}
-        <br />
-        {{schedule}}
-        <br />
-        €{{cost}}
-        <br />
-        {{creator.name}}
-        <br />
-      </div>
-      <a href="/creator/course/{{_id}}/edit" class="edit-btn">Edit Course</a>
-      <form method="POST" action="/creator/course/{{_id}}/delete">
-        <button>Delete Course</button>
-      </form>
-    {{/each}}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="picture">
+            {{#if picture}}
+              <img
+                src="{{picture}}"
+                alt="course_picture"
+                class="card-img-top img-fluid rounded"
+                style="width: 100%; height: 15vw; object-fit: cover"
+              />
+            {{/if}}
+            {{#unless picture}}
+              <img
+                src="/images/developer.JPG"
+                alt="lake"
+                class="card-img-top img-fluid rounded"
+                style="width: 100%; height: 15vw; object-fit: cover"
+              />
+            {{/unless}}
+          </div>
+          <div class="card-body">
+            <rect width="100%" height="100%" fill="#55595c"></rect>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em"><a
+                href="/course/course/{{_id}}"
+                class="course-title"
+              ><h4>{{title}}</h4></a></text>
+            <p class="card-text">
+              {{description}}
+            </p> 
+              <strong>Timing:</strong> {{schedule}}
+            <br />
+              <strong>Price:</strong> €{{cost}}
+            <br />
+              <strong>Instructor:</strong> {{creator.name}}
+            <br />
+          </div>
+            <a href="/creator/course/{{_id}}/edit" class="edit-btn">Edit Course</a>
+            <form method="POST" action="/creator/course/{{_id}}/delete">
+              <button>Delete Course</button>
+            </form>
+          </div>  
+        </div>    
+      {{/each}}
+    </div>
   </div>
   <hr />
 
@@ -57,32 +84,55 @@
     <h2>Enrolled in:</h2>
     <hr />
 
-    {{#each enrollments}}
-      <h3>Course details:</h3>
-      <div>
-        <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
-        <br />
-        {{#if courseId.picture}}
-          <img
-            id="course-picture"
-            src="{{courseId.picture}}"
-            alt="Course Picture"
-          />
-        {{/if}}
-        <br />
-        {{courseId.description}}
-        <br />
-        {{courseId.schedule}}
-        <br />
-        €{{courseId.cost}}
-        <br />
-        {{courseId.creator.name}}
-        <br />
-      </div>
-      <form method="POST" action="/course/course/{{courseId._id}}/unenroll">
-        <button>Unenroll</button>
-      </form>
-    {{/each}}
+{{! Cards for my Enrolled Courses }}
+  <div class="container">
+    <div class="row">  
+      {{#each enrollments}}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="picture">
+              {{#if courseId.picture}}
+                <img
+                  src="{{courseId.picture}}"
+                  alt="course_picture"
+                  class="card-img-top img-fluid rounded"
+                  style="width: 100%; height: 15vw; object-fit: cover"
+                />
+              {{/if}}
+              {{#unless courseId.picture}}
+                <img
+                  src="/images/developer.JPG"
+                  alt="lake"
+                  class="card-img-top img-fluid rounded"
+                  style="width: 100%; height: 15vw; object-fit: cover"
+                />
+              {{/unless}}
+            </div>
+            <div class="card-body">
+              <rect width="100%" height="100%" fill="#55595c"></rect>
+              <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                <a href="/course/{{courseId._id}}">{{courseId.title}}</a>
+              </text>
+              <p class="card-text">
+                {{courseId.description}}
+              </p> 
+                {{courseId.schedule}}
+              <br />
+                €{{courseId.cost}}
+              <br />
+                {{courseId.creator.name}}
+              <br />
+            </div>
+              <form method="POST" action="/course/course/{{courseId._id}}/unenroll">
+                <button>Unenroll from this course</button>
+              </form>  
+          </div> 
+        </div>    
+      {{/each}}
+    </div>
   </div>
-  <a href="/course/course-create" id="create-course-private">Create a course</a>
+
+      
+</div>
+  <a href="/course/course-create" id="create-course">Create your own course!</a>
 </div>
