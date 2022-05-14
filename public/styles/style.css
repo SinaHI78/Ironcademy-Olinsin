@@ -138,15 +138,31 @@ label {
   padding: 3%;
 }
 
+#footer {
+  background-color: #dcdcdc;
+  text-align: center;
+  padding: 3%;
+}
+
+#twitter-logo {
+  width: 2%;
+}
+
+#course-description {
+  padding-right: 5em;
+  padding-left: 5em;
+}
+
 .single-view {
   background-color: #dcdcdc;
   text-align: center;
   padding: 3%;
 }
 
-.single-view .btn {
-  display: flex;
-  justify-content: center;
+.single-view a,
+.single-view button {
+  margin-left: 41%;
+  margin-bottom: 0.5em;
   background-color: #82b74b;
   color: #ffffff;
   border-radius: 10px;
@@ -162,6 +178,10 @@ label {
 }
 
 .single-view h3 {
+  text-decoration: underline;
+}
+
+.single-view h4 {
   text-decoration: underline;
 }
 

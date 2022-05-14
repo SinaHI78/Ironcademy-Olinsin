@@ -2,18 +2,15 @@
   <h2>Course details:</h2>
   <div>
     <h4>{{course.title}}</h4>
-    <br />
     {{#if course.picture}}
       <img id="course-picture" src="{{course.picture}}" alt="Course Image" />
     {{/if}}
     <br />
-    {{course.description}}
-    <br />
-    {{course.schedule}}
-    <br />
-    €{{course.cost}}
-    <br />
-    {{course.creator.name}}
+    <p id="course-description"><strong><h5
+        >Description:</h5>{{course.description}}</strong></p>
+    <p><strong>Timings: </strong>{{course.schedule}}</p>
+    <p><strong>Price: €</strong>{{course.cost}}</p>
+    <p><strong>Instructor: </strong>{{course.creator.name}}</p>
     <hr />
   </div>
   {{#if userIsCreator}}
