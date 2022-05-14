@@ -49,6 +49,10 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+.logo:hover {
+  color: #ff0000;
+}
 nav {
   display: flex;
   background-color: #3e4444;
@@ -68,6 +72,9 @@ nav {
     }
     &:first-child {
       margin-right: auto;
+    }
+    a:hover {
+      color: #ff0000;
     }
   }
 }
@@ -343,14 +350,9 @@ label {
 }
 
 .authentication-button {
-  //display: flex;
-  //flex-direction: row;
-  // justify-content: center;
-
   width: 35vw;
   padding: 3% 0;
   button {
-    //margin: auto;
     margin-left: 20%;
   }
   p {
@@ -361,12 +363,27 @@ label {
 #likeCounter {
   font-family: Montserrat;
   margin-top: 80%;
-  border: 1px dotted gray;
+  border: 1px solid gray;
   padding: 1%;
+  margin-left: 84%;
 }
 
 #like-btn {
   width: 25%;
-  padding: 8px;
+  padding: 2%;
   margin: 0%;
+}
+
+.private {
+  input,
+  img {
+    background-color: #ffffff;
+  }
+  button {
+    margin-top: 1%;
+  }
+}
+
+.card-blocks img:hover {
+  transform: scale(1.03);
 }

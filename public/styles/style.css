@@ -41,9 +41,8 @@ a {
   align-items: center;
 }
 
-.navStyle a.hover {
-  text-decoration: none;
-  color: red;
+.logo:hover {
+  color: #ff0000;
 }
 
 nav {
@@ -72,6 +71,11 @@ nav button:not(:last-child) {
 nav a:first-child,
 nav button:first-child {
   margin-right: auto;
+}
+
+nav a a:hover,
+nav button a:hover {
+  color: #ff0000;
 }
 
 #logo {
@@ -376,14 +380,24 @@ label {
 #likeCounter {
   font-family: Montserrat;
   margin-top: 80%;
-  border: 1px dotted gray;
+  border: 1px solid gray;
   padding: 1%;
+  margin-left: 84%;
 }
 
 #like-btn {
   width: 25%;
-  padding: 8px;
+  padding: 2%;
   margin: 0%;
+}
+
+.private input,
+.private img {
+  background-color: #ffffff;
+}
+
+.private button {
+  margin-top: 1%;
 }
 
 /*# sourceMappingURL=style.css.map */

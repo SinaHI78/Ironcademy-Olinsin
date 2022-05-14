@@ -12,20 +12,21 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body>
     <div class="navStyle">
       <nav>
-        <a href="/" id="logo"><h3>⭕ IronCademy </h3></a>
+        <a href="/" class="logo" id="logo"><h3>⭕ IronCademy </h3></a>
         {{#if user}}
-          <a href="/authentication/private">{{user.name}}'s Profile</a>
+          <a class="logo" href="/authentication/private">{{user.name}}'s Profile</a>
           <form action="/authentication/sign-out" method="GET">
-            <button type="submit">Sign out</button>
+            <button class="logo" type="submit">Sign out</button>
           </form>
         {{else}}
-          <a href="/authentication/sign-in">Sign in</a>
-          <a href="/authentication/sign-up">Sign up</a>
+          <a class="logo" href="/authentication/sign-in">Sign in</a>
+          <a class="logo" href="/authentication/sign-up">Sign up</a>
         {{/if}}
       </nav>
     </div>
