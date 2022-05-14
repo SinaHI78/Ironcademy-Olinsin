@@ -314,6 +314,7 @@ label {
   input {
     border-radius: 10px;
     background-color: #ffffff;
+    width: 50%;
   }
   label {
     font-weight: bold;
@@ -332,6 +333,12 @@ label {
 #likeCounter {
   font-family: Montserrat;
   margin-top: 80%;
-  border: 1px solid gray;
+  border: 1px dotted gray;
   padding: 1%;
+}
+
+#like-btn {
+  width: 25%;
+  padding: 0%;
+  margin: 0%;
 }

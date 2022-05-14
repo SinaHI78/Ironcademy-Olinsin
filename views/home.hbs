@@ -54,13 +54,23 @@
                 {{#if liked}}
                   <form method="POST" action="/course/course/{{_id}}/unlike">
                     <button class="btn btn-sm btn-outline-secondary">
-                      Liked
+                      <img
+                        id="like-btn"
+                        src="/images/liked-btn.png"
+                        alt="Like button"
+                      />
+                      <!--Liked -->
                     </button>
                   </form>
                 {{else}}
                   <form method="POST" action="/course/course/{{_id}}/like">
                     <button class="btn btn-sm btn-outline-secondary">
-                      Like
+                      <img
+                        id="like-btn"
+                        src="/images/like-btn.png"
+                        alt="Like button"
+                      />
+                      <!--Like -->
                     </button>
                   </form>
                 {{/if}}
